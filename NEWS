@@ -4,3 +4,9 @@ Version 1.0.0:
   
   o First release of the TPP package for analyzing Thermal Proteome Profiling 
     experiments.
+
+Version 1.0.1:
+
+  o bugfixes in config table import from .csv files: 
+    1. can now handle different types of delimitors (";", "\t", ",")
+    2. automatically removes empty rows after import
