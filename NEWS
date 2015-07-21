@@ -14,3 +14,7 @@ Version 1.0.1:
 Version 1.0.2:
   o the recent update of the gridExtra package to Version 2.0.0 required a small fix to 
     ensure sucessful plotting of the melting curves and parameter tables.
+
+Version 1.0.3:
+  o fixed problem in QC-plot generation due to the gridExtra package update: 
+    adapted height parameter in grid.arrange
