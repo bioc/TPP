@@ -1,8 +1,8 @@
 ## ------------------------------------------------------------------------- ##
 ## function 'applyCoeffs':
 ## ------------------------------------------------------------------------- ##
-test_that(desc="applyCoeffs", code={
-  message("Checking function 'applyCoeffs'")
+test_that(desc="testApplyCoeffs", code={
+  cat("Checking function 'applyCoeffs': ")
   x <- matrix(rnorm(10), nrow=2, ncol=5)
   eSet <- ExpressionSet(assayData=x)
 
@@ -11,5 +11,5 @@ test_that(desc="applyCoeffs", code={
   
   xNew <- unname(exprs(eSetNormed))
   xRef <- rbind(x[1,] * normCoeffs, x[2,] * normCoeffs)
-  expect_equal(xNew, xRef)
+  cat(paste("   ", expect_equal(xNew, xRef)))
 })

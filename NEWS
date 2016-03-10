@@ -83,6 +83,32 @@ Version 2.0.0:
     fields can contain single ' or " characters.
   o Now enabling arbitrary numbers of plot colors for melting curves or dose response 
     curves.
-    
 Version 2.0.1:
 Updated package vignette.
+  
+Version 2.0.2  (Nov-19-2015):
+  o Bugfix in config table import:
+      All non-alphanumeric characters in the Experiment column are now replaced 
+      by'_'.
+ o Bugfix in QC scatter plots:
+      Can now handle cases where protein IDs do not overlap between experiments,
+      or where the temperatures differ between experiments.  The affected plots 
+      are left empty and contain a message to explain the problem.
+Version 2.1.3 (Mar-09-2016)
+
+ o Added column 'pEC50_quality_check' to CCR output to filter out pec50 values 
+ not within concentration ranges.
+ o Removed example dataset containing fitted data from the Data folder in order 
+   to reduce the overall package size (it was only used by some examples in the 
+   function Documentation). 
+ o Minor changes to documentation in order to ensure that R CMD check and 
+   BiocCheck run again without warnings.
+ o Now selectively importing functions from grid and gridExtra package to  
+   prevent 'double import' warning due to recent changes in ggplot2.
+ o Remove importFrom(grid, unit), because unit() is alreay imported by ggplot2 
+   (version 2.0.0.), which caused a warning. 
+   Added dependency ggplot2 (>= 2.0.0) to ensure that grid::unit is still available.
+ o Bugfixes required after recent ggplot2 update:
+    - Included selective import of the grid::gTree function for QC plots.
+    - Fixed problem with QC-plot histograms to re-activate plotting of contours 
+      in addition to areas.
