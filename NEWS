@@ -2,7 +2,7 @@ NEWS: TPP
 
 Version 1.0.0:
   
-  o First release of the TPP package for analyzing Thermal Proteome Profiling 
+  o First release of the TPP package for analyzing Thermal Proteome Profiling
     experiments.
 
 Version 1.1.0:
@@ -87,7 +87,7 @@ Version 2.1.0:
 Version 2.1.1:
 Updated package vignette.
   
-2.1.2 (Nov-19-2015):
+Version 2.1.2 (Nov-19-2015):
   o Bugfix in config table import:
       All non-alphanumeric characters in the Experiment column are now replaced 
       by'_'.
@@ -121,5 +121,10 @@ Updated package vignette.
 2.1.7 (Jan-22-2016)
  o Bugfixes required after recent ggplot2 update:
     - Included selective import of the grid::gTree function for QC plots.
-    - Fixed problem with QC-plot histograms to re-activate plotting of contours 
-      in addition to areas.
+    - Fixed problem with QC-plot histograms to re-activate plotting of contours in addition to areas.
+
+2.2.1
+Update to Bioconductor Release 3.3
+
+2.2.3 (Jun-02-2016)
+ o Bugfixes in the functions responsible for filtering by user-specified QC columns (e.g. 'qssm')  for normalization set creation. It is now possible to leave the 'otherRequirements' slot in the normalization criteria empty.
