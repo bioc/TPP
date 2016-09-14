@@ -3,6 +3,12 @@
 #'   repeatedly started from perturbed starting parameters (maximum iterations 
 #'   defined by argument \code{maxAttempts})
 #'   
+#'   If \code{doPlot = TRUE}, melting curves are be plotted in individual files
+#'   per protein. Each file is named by its unique identifier. Filenames are
+#'   truncated to 255 characters (requirement by most operation systems). 
+#'   Truncated filenames are indicated by the suffix "_truncated[d]", where [d] 
+#'   is a unique number to avoid redundancies.
+#'   
 #' @return A list of ExpressionSets storing the data together with the melting
 #'   curve parameters for each experiment.
 #'   Each ExpressionSet contains the measured fold changes, as well as row and
@@ -73,7 +79,19 @@ tpptrCurveFit <- function(data, dataCI=NULL, resultPath=NULL,
       dir.create(file.path(resultPath, plotDir), recursive=TRUE)
     }
     ## File names for melting curve plots: Replace special characters by '_'.
-    fNames<-paste("meltCurve_",gsub("([^[:alnum:]])","_",protIDs),".pdf",sep="")
+    fNames <- paste0("meltCurve_",gsub("([^[:alnum:]])","_", protIDs))
+
+    # limit file name length to 255 characters to avoid crashes on most filesystems:
+    maxLen <- 255 - nchar(".pdf") - nchar("_truncated") - nchar(as.character(length(fNames)))
+    tooLong <- nchar(fNames) > maxLen
+    cropSuffix <- paste0("_truncated", 1:sum(tooLong))
+    fNames <- sapply(fNames, function(fTmp) {
+      fNew <- substr(fTmp, 1, min(maxLen, nchar(fTmp)))
+    }, simplify = TRUE, USE.NAMES = FALSE)
+    fNames[tooLong] <- paste0(fNames[tooLong], cropSuffix)
+    fNames <- paste0(fNames, ".pdf")
+    
+    
     plotPathsFull <- file.path(plotDir, fNames)
   } else {
     plotPathsFull <- rep("", length(protIDs))

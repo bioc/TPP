@@ -49,7 +49,13 @@
 #'   The argument \code{nCores} could be either 'max' (use all available cores) 
 #'   or an upper limit of CPUs to be used.
 #'   
-#'   The melting curve plots will be stored in a subfolder with name 
+#'   If \code{doPlot = TRUE}, melting curve plots are generated seperately for 
+#'   each protein and stored in separate pdfs.
+#'   Each file is named by the unique protein identifier. Filenames are
+#'   truncated to 255 characters (requirement by most operation systems). 
+#'   Truncated filenames are indicated by the suffix "_truncated[d]", where [d] 
+#'   is a unique number to avoid redundancies.
+#'   All melting curve plots are stored in a subfolder with name 
 #'   \code{Melting_Curves} at the location specified by \code{resultPath}.
 #'   
 #'   If the melting curve fitting procedure does not converge, it will be 

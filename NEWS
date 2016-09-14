@@ -133,3 +133,7 @@ Removed unit test that causes R CMD check to crash  since the latest update of p
  o Bugfixes in the functions responsible for filtering by user-specified QC columns (e.g. 'qssm')  for normalization set creation. It is now possible to leave the 'otherRequirements' slot in the normalization criteria empty.
  o Fixed typos in function documentation of 'analyzeTPPTR()'
  o Fixed bug in plotColors for the case when no comparisons are specified
+ 
+2.2.4 (Sept-14-2016)
+ o Bugfix in 'tpptrCurveFit': restrict file names to 255 characters when creating
+   melting curve plots in order to prevent file system crashes.
