@@ -63,13 +63,21 @@ tppccrTransform <- function(data, fcCutoff=1.5, fcTolerance=0.1) {
 
     # Transform FCs of proteins stabilized by cpd treatment to 
     # fc=0 for DMSO and fc=1 for hightest cpd conc
+    
+    # Prevent division by zero, if fcCutoff was 1 (this can be done if 
+    # curve fitting should be performed for all proteins):
+    denominator <- fcMaxConc - 1
+    denominator[denominator == 0] <- 1
+
     iS <- which(flagS)
-    fcNew[iS,]   <- (fcOrig[iS  ,] - 1) / (fcMaxConc[iS] - 1)
+    fcNew[iS,]   <- (fcOrig[iS  ,] - 1) / denominator[iS] 
+    # fcNew[iS,]   <- (fcOrig[iS  ,] - 1) / (fcMaxConc[iS] - 1)
 
     # Transform FCs of proteins destabilized by cpd treatment to 
     # fc=1 for DMSO and fc=0 for hightest cpd conc
     iD <- which(flagD)
-    fcNew[iD,] <- (fcOrig[iD,] - fcMaxConc[iD])/ (1-fcMaxConc[iD])
+    fcNew[iD,] <- (fcOrig[iD,] - fcMaxConc[iD])/ -denominator[iD] 
+    # fcNew[iD,] <- (fcOrig[iD,] - fcMaxConc[iD])/ (1-fcMaxConc[iD])
 
     ## Store transformed FCs in exprs field:
     exprs(dTmp) <- fcNew
