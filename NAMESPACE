@@ -15,9 +15,13 @@ export(tpptrCurveFit)
 export(tpptrDefaultNormReqs)
 export(tpptrImport)
 export(tpptrNormalize)
-import(ggplot2)
 import(Biobase)
-import(plyr)
+import(ggplot2)
+import(dplyr)
+import(magrittr, except = extract)
+
+import(plyr, except = c(mutate, summarize, summarise, rename, arrange, failwith, id, desc, count)) # conflict with dplyr
+
 import(openxlsx)
 import(VennDiagram)
 import(VGAM)
