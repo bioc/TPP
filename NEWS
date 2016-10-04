@@ -137,3 +137,7 @@ Removed unit test that causes R CMD check to crash  since the latest update of p
 2.2.4 (Sept-14-2016)
  o Bugfix in 'tpptrCurveFit': restrict file names to 255 characters when creating
    melting curve plots in order to prevent file system crashes.
+   
+2.2.5 (Oct-04-2016)
+ o Bugfix in CCR workflow: avoid division by 0 when transforming foldchanges 
+   before dose-response curve fitting.
