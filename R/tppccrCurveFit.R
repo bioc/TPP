@@ -87,7 +87,7 @@ tppccrCurveFit <- function(data=NULL, fcTable=NULL, cpdEffects=NULL,
     iNoInf <- !is.infinite(fcTmp$foldChange)
     iValid <- iNoNAs & iNoInf
     idsValid <- unique(fcTmp[which(iValid),]$id)
-    fcFiltered <- filter(fcTmp, id %in% idsValid)
+    fcFiltered <- subset(fcTmp, id %in% idsValid)
     fcNonNA <- rbind(fcNonNA, fcFiltered)
   }
   

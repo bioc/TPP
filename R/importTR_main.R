@@ -45,7 +45,8 @@ importTR_main <- function(configTable, data, idVar, fcStr, naStrs, qualColName,
   ## created ExpressionSets. They will be retrieved later for the statistical
   ## comparisons:
   for (n in names(fcListAll)){
-    annotation(fcListAll[[n]]) <- c(annotation(fcListAll[[n]]), compStrs)     
+    compStrTmp <- ifelse(is.na(compStrs), "", compStrs)
+    annotation(fcListAll[[n]]) <- c(annotation(fcListAll[[n]]), compStrTmp)     
   }
   message("\n")
   
