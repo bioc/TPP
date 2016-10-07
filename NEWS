@@ -141,3 +141,6 @@ Removed unit test that causes R CMD check to crash  since the latest update of p
 2.2.5 (Oct-04-2016)
  o Bugfix in CCR workflow: avoid division by 0 when transforming foldchanges 
    before dose-response curve fitting.
+
+2.2.6 (Oct-06-2016)
+ o Bugfix in CCR workflow: convert filter command back to subet command.
