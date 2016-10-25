@@ -5,11 +5,11 @@
 \title{Create data frame list for 2D-TPP experiment}
 \usage{
 tpp2dCreateDataFrameList(configTable = NULL, data = NULL,
-  idVar = "representative", fcStr = NULL, addCol = NULL,
-  intensityStr = "sumionarea_protein_", qualColName = c("qupm", "qusm"))
+  idVar = "gene_name", fcStr = NULL, addCol = NULL,
+  intensityStr = "signal_sum_", qualColName = "qupm")
 }
 \arguments{
-\item{configTable}{data frame of experimental conditons. See Section \code{details} for 
+\item{configTable}{data frame of experimental conditions. See Section \code{details} for 
 instructions how to create this object.}
 
 \item{data}{can be either a list of data frames featuring a data frame with data

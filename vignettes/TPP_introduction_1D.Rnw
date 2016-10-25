@@ -177,7 +177,7 @@ If you want to use data from other sources than \Rpackage{isobarQuant}, see sect
 If you import the data directly from tab-delimited \texttt{.txt} files, please make sure that the entries are not encapsulated by quotes (for example, \texttt{"entry1"} or \texttt{'entry2'}). All quotes will be ignored during data import in order to robustly handle entries containing single quotes (for example protein annotation by \texttt{5'} or \texttt{3'}).
 
 By default, plots for the fitted melting curves are produced and stored in pdf 
-format for each protein during runtime and we highly recommend that you do this when you analyse your data. However, producing plots for all \Sexpr{length(unique(unlist(sapply(hdacTR_data, function(d) d$gene_name))))} proteins in our dataset can be time consuming and would slow down the execution of the current example. Thus, we first disable plotting by setting the argument \Rcode{plotCurves=FALSE}. 
+format for each protein during runtime and we highly recommend that you do this when you analyze your data. However, producing plots for all \Sexpr{length(unique(unlist(sapply(hdacTR_data, function(d) d$gene_name))))} proteins in our dataset can be time consuming and would slow down the execution of the current example. Thus, we first disable plotting by setting the argument \Rcode{plotCurves=FALSE}. 
 Afterwards, we will produce plots for individual proteins of interest. Note that, in practice, you will only be able to examine the results in an unbiased manner if you allow the production of all plots.
 
 We start the workflow by typing
@@ -329,7 +329,7 @@ This loaded the object \Robject{trDataFitted}, which is a list of \Rclass{Expres
 
 Now we start the curve parameter evaluation, this time applying less rigorous 
 filters on the quality of the fitted curves (defined by the minimum $R^2$), and
-their long-term melting behaviour (constrained by the maximum plateu paramter):
+their long-term melting behavior (constrained by the maximum plateu paramter):
 <<trPvals, message=TRUE, cache=TRUE>>=
 minR2New <- 0.5 # instead of 0.8
 maxPlateauNew <- 0.7 # instead of 0.3

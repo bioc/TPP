@@ -12,7 +12,7 @@
 #' @param qualColName character string indicating which column contain protein 
 #'  identification quality measures
 #' 
-tpp2dTRReferenceObject <- function(tppRefData=NULL, tppRefDataPath=NULL, fcStr="norm_rel_fc_protein_", qualColName="qupm"){
+tpp2dTRReferenceObject <- function(tppRefData=NULL, tppRefDataPath=NULL, fcStr="norm_rel_fc_", qualColName="qupm"){
   
   # pre-define variables to prevent NOTE by devtools::check()
   variable <- NULL

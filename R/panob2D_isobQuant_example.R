@@ -1,6 +1,6 @@
 #' @title Example subsets of a Panobinostat 2D-TPP dataset and the
 #'   corresponding configuration table to start the analysis.
-#' @name Panobinostat_2DTPP_smallExample
+#' @name panob2D_isobQuant_example
 #' @docType data
 #' @description Example dataset obtained by 2D-TPP experiments for analysis by 
 #' the TPP-package. It contains all necessary arguments to start the analysis
@@ -23,8 +23,13 @@ NULL
 #'   functionalities without invoking the whole time consuming analysis on the 
 #'   big dataset.
 #'   
-#'   The originial dataset in plain text format is located in the folder 
-#'   \code{'example_data/2D_example_data'} in the package's installation 
+#'   The original dataset was not produced by isobarQuant but by a custom-made
+#'   software instead. For illustrative purposes, the column names have been 
+#'   adapted to the isobarQuant convention (id column = "gene_name", 
+#'   signal columns starting with = "signal_sum_", 
+#'   quantified spectrum matches = "qusm", quantified peptide matches = "qupm").
+#'   The original unmodified dataset in plain text format is still located in the 
+#'   folder  \code{'example_data/2D_example_data'} in the package's installation 
 #'   directory. You can find it on your system by the \code{R} command 
 #'   \code{system.file('example_data', package = 'TPP')}.
 NULL

@@ -2,7 +2,7 @@
 % Please edit documentation in R/tpptrSplineFitAndTest.R
 \name{tpptrSplineFitAndTest}
 \alias{tpptrSplineFitAndTest}
-\title{Perform spline fitting and analyse by moderated F-test}
+\title{Perform spline fitting and analyze by moderated F-test}
 \usage{
 tpptrSplineFitAndTest(data, factorsH1, factorsH0 = c(), resultPath = NULL,
   ggplotTheme = tppDefaultTheme(), doPlot = TRUE, nCores = "max",
@@ -19,7 +19,7 @@ tpptrSplineFitAndTest(data, factorsH1, factorsH0 = c(), resultPath = NULL,
 
 \item{ggplotTheme}{ggplot theme for melting curve plots.}
 
-\item{doPlot}{boolan value indicating whether melting curves should be 
+\item{doPlot}{boolean value indicating whether melting curves should be 
 plotted, or whether just the curve parameters should be returned.}
 
 \item{nCores}{either a numerical value given the desired number of CPUs, or 
@@ -41,7 +41,7 @@ A list of two data frames: 1. A long table containing the spline
 \description{
 A wrapper function around the functions \code{tpptrFitSplines}, 
 \code{tpptrFTest}, \code{tpptrPlotSplines}, which fits natural splines to
-  all proteins in a dataset and detect differential behaviour between
+  all proteins in a dataset and detect differential behavior between
   conditions by a moderated F-test. The results are formatted as a wide table
   with one row per protein. This table contains all the original data, the
   test results, and (optionally) additional annotation columns for each 

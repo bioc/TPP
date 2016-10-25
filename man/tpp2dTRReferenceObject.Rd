@@ -5,7 +5,7 @@
 \title{TPP-TR reference object}
 \usage{
 tpp2dTRReferenceObject(tppRefData = NULL, tppRefDataPath = NULL,
-  fcStr = "norm_rel_fc_protein_", qualColName = "qupm")
+  fcStr = "norm_rel_fc_", qualColName = "qupm")
 }
 \arguments{
 \item{tppRefData}{TPP-TR reference object that can be directly passed to the function}

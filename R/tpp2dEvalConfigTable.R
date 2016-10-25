@@ -5,11 +5,11 @@
 #' @return A configtable that works with the 2D-TPP workflow
 #' 
 #' @examples 
-#' data("panobinostat_2DTPP_smallExample")
-#' configTable <- tpp2dEvalConfigTable(panobinostat_2DTPP_config)
+# data("panob2D_isobQuant_example")
+# configTable <- tpp2dEvalConfigTable(panobinostat_2DTPP_config)
 #' 
-#' configTable <- tpp2dEvalConfigTable(system.file("example_data/2D_example_data/hdac2D_config.txt", 
-#'                                                 package = "TPP"))
+# configTable <- tpp2dEvalConfigTable(system.file("example_data/2D_example_data/hdac2D_config.txt",
+#                                                 package = "TPP"))
 #' 
 #' @param configTable data frame or character object with the path to a file, 
 #'   that specifies important details of the 2D-TPP experiment. See Section 

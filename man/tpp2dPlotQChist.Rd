@@ -5,8 +5,7 @@
 \title{Plot quality control histograms}
 \usage{
 tpp2dPlotQChist(configFile = NULL, resultTable = NULL, resultPath = NULL,
-  trRef = NULL, fcStr = NULL, idVar = "representative",
-  qualColName = "qupm")
+  trRef = NULL, fcStr = NULL, idVar = "gene_name", qualColName = "qupm")
 }
 \arguments{
 \item{configFile}{data frame or system path to table that specifies important details 

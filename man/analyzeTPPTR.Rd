@@ -26,10 +26,10 @@ instead of specifying the file path in the \code{configTable} argument.}
 \item{resultPath}{location where to store melting curve plots, intermediate 
 results, and the final results table.}
 
-\item{methods}{statistical methods for modeling melting behaviour and detecting 
+\item{methods}{statistical methods for modeling melting behavior and detecting 
 significant differences between experimental conditions. Ich more than one 
 method are specified, results will be computed for each and concatenated in 
-the result talble (default: meltcurvefit).}
+the result table (default: meltcurvefit).}
 
 \item{idVar}{character string indicating which data column provides the 
 unique identifiers for each protein.}
@@ -68,10 +68,10 @@ passed to function \code{\link{nls}} for curve fitting.}
 \item{maxAttempts}{maximal number of curve fitting attempts if model does not
 converge.}
 
-\item{plotCurves}{boolan value indicating whether melting curves should be 
+\item{plotCurves}{boolean value indicating whether melting curves should be 
 plotted. Deactivating plotting decreases runtime.}
 
-\item{fixedReference}{name of a fixed reference experiment for normaliztion. 
+\item{fixedReference}{name of a fixed reference experiment for normalization. 
 If NULL (default), the experiment with the best R2 when fitting a melting 
 curve through the median fold changes is chosen as the reference.}
 
@@ -112,7 +112,7 @@ Invokes the following steps: \enumerate{ \item Import data using the
   \item Export results to Excel using the function \code{\link{tppExport}}. }
   
   The default settings are tailored towards the output of the python package 
-  isobarQuant, but can be customised to your own dataset by the arguments 
+  isobarQuant, but can be customized to your own dataset by the arguments 
   \code{idVar, fcStr, naStrs, qualColName}.
   
   If \code{resultPath} is not specified, the location of the first input file
@@ -137,7 +137,7 @@ Invokes the following steps: \enumerate{ \item Import data using the
   The argument \code{methods} can be one of the following:
   More than one method can be specified. For example, parametric testing of 
   melting points and nonparametric spline-based goodness-of-fit tests can be 
-  performed seqeuentially in the same analysis. The results are then written 
+  performed sequentially in the same analysis. The results are then written 
   to separate columns of the output table.
   
   If \code{methods} contains "meltcurvefit", melting curve plots will be 
@@ -150,7 +150,7 @@ Invokes the following steps: \enumerate{ \item Import data using the
   The argument \code{nCores} could be either 'max' (use all available cores) 
   or an upper limit of CPUs to be used.
   
-  If \code{doPlot = TRUE}, melting curve plots are generated seperately for 
+  If \code{doPlot = TRUE}, melting curve plots are generated separately for 
   each protein and stored in separate pdfs.
   Each file is named by the unique protein identifier. Filenames are
   truncated to 255 characters (requirement by most operation systems). 

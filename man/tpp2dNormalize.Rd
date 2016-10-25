@@ -4,7 +4,7 @@
 \alias{tpp2dNormalize}
 \title{Median normalization of protein fold changes of 2D-TPP data}
 \usage{
-tpp2dNormalize(configTable, data, fcStr = "rel_fc_protein_")
+tpp2dNormalize(configTable, data, fcStr = "rel_fc_")
 }
 \arguments{
 \item{configTable}{data frame that specifies important details of the 2D-TPP experiment}
@@ -24,11 +24,12 @@ Normalizes fold changes retrieved from 2D-TPP experiment by dividing by the medi
   change
 }
 \examples{
-  load(system.file("example_data/2D_example_data/referenceFcData.RData", package="TPP"))
-  data("panobinostat_2DTPP_smallExample")
-  NormData2d <- tpp2dNormalize(configTable = panobinostat_2DTPP_config, 
-                                    data=headData2dFc,
-                                    fcStr="rel_fc_protein_")
+data("panob2D_isobQuant_example")
+cfg <- panobinostat_2DTPP_config
+datRaw <- panobinostat_2DTPP_data
+data2d <- tpp2dImport(cfg, datRaw, fcStr = NULL)
+fcData2d <- tpp2dComputeFoldChanges(cfg, data2d)
+normData2d <- tpp2dNormalize(cfg, fcData2d)
   
 }
 

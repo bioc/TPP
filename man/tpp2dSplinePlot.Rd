@@ -6,7 +6,7 @@
 \usage{
 tpp2dSplinePlot(data_2D = NULL, trData = NULL, fcStr = NULL,
   idVar = NULL, methods = c("doseResponse", "splineFit"),
-  refFcStr = "norm_rel_fc_protein_", verbose = FALSE)
+  refFcStr = "norm_rel_fc_", verbose = FALSE)
 }
 \arguments{
 \item{data_2D}{result data.frame from a 2D-TPP CCR analysis}
@@ -21,8 +21,8 @@ the names of the experiments.}
 identifiers}
 
 \item{methods}{vector of character strings that indicate which methods has been used 
-for the previous analysis (default: c("doseRespone"), alternative: c("splineFit") or 
-c("doseRespone", "splineFit"))}
+for the previous analysis (default: c("doseResponse"), alternative: c("splineFit") or 
+c("doseResponse", "splineFit"))}
 
 \item{refFcStr}{character string indicating how columns that will contain the fold change
 values in the reference data set}

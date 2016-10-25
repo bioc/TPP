@@ -341,7 +341,7 @@ merge_cols <- function(data, fun = paste, ...) {
   #
   # @param data data matrix
   # @param fun function to deal with different values per row
-  # @param ... addtional arguments to fun
+  # @param ... additional arguments to fun
   #
   # @return vector with combined columns
      

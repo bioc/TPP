@@ -5,12 +5,11 @@
 #'   creates respective columns which are added two the data frame which is handed over
 #'  
 #' @examples 
-#'   data("panobinostat_2DTPP_smallExample")
-#'   load(system.file("example_data/2D_example_data/fractAbundInData.RData", package="TPP"))
-#'   fracAbund <- tpp2dCalcFractAbundance(configTable = panobinostat_2DTPP_config, 
-#'                 data = fractAbundInData,
-#'                 intensityStr = "sumionarea_protein_", 
-#'                 idVar = "representative")
+#' data("panob2D_isobQuant_example")
+#' cfg <- panobinostat_2DTPP_config
+#' datRaw <- panobinostat_2DTPP_data
+#' data2d <- tpp2dImport(cfg, datRaw, fcStr = NULL)
+#' data2dNew <- tpp2dCalcFractAbundance(cfg, data2d)
 #'  
 #' @param configTable data frame that specifies important details of the TPP-CCR experiment.
 #' @param data data frame of TPP-CCR results (e.g. obtained by \code{run2DTPPCCR}).
@@ -22,7 +21,7 @@
 #'   and DMSO1 vs DMSO2 ratio
 #'   
 #' @export
-tpp2dCalcFractAbundance <- function(configTable=NULL, data=NULL, intensityStr=NULL, idVar=NULL){
+tpp2dCalcFractAbundance <- function(configTable=NULL, data=NULL, intensityStr="signal_sum_", idVar="gene_name"){
   message("Calculating fractional abundance and DMSO1 vs. DMSO2 ratio...")
   # determine adjacent temperature pairs
   compound <- as.character(configTable$Compound[1])

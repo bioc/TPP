@@ -1,8 +1,8 @@
-#' @title Perform spline fitting and analyse by moderated F-test
+#' @title Perform spline fitting and analyze by moderated F-test
 #'   
 #' @description A wrapper function around the functions \code{tpptrFitSplines}, 
 #' \code{tpptrFTest}, \code{tpptrPlotSplines}, which fits natural splines to
-#'   all proteins in a dataset and detect differential behaviour between
+#'   all proteins in a dataset and detect differential behavior between
 #'   conditions by a moderated F-test. The results are formatted as a wide table
 #'   with one row per protein. This table contains all the original data, the
 #'   test results, and (optionally) additional annotation columns for each 
@@ -36,7 +36,7 @@
 #' @param data the data to be fitted.
 #' @param resultPath location where to store the spline plots per protein.
 #' @param ggplotTheme ggplot theme for melting curve plots.
-#' @param doPlot boolan value indicating whether melting curves should be 
+#' @param doPlot boolean value indicating whether melting curves should be 
 #'   plotted, or whether just the curve parameters should be returned.
 #' @param splineDF degrees of freedom for natural spline fitting.
 #' @param nCores either a numerical value given the desired number of CPUs, or 

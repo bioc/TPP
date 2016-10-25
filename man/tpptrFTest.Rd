@@ -2,7 +2,7 @@
 % Please edit documentation in R/tpptrFTest.R
 \name{tpptrFTest}
 \alias{tpptrFTest}
-\title{Analyse spline fits to detect differential behaviour over time}
+\title{Analyze spline fits to detect differential behavior over time}
 \usage{
 tpptrFTest(fittedModels, doPlot = FALSE, resultPath = NULL)
 }
@@ -19,8 +19,8 @@ p-values before/ after Benjamini Hochberg adjustment.}
 A long table containing the hypothesis test results per protein.
 }
 \description{
-Analyse fitted natural spline models and look for 
-differential behaviour between conditions by a moderated F-test.
+Analyze fitted natural spline models and look for 
+differential behavior between conditions by a moderated F-test.
 }
 \details{
 If \code{doPlot} is \code{TRUE}, but no \code{resultPath} is 

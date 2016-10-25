@@ -3,12 +3,15 @@
 #' 
 #' 
 #' @examples
-#' data("panobinostat_2DTPP_smallExample")
-#' load(system.file("example_data/2D_example_data/shortData2d.RData", package="TPP"))
-#' # tpp2dExport(configTable = panobinostat_2DTPP_config, tab=shortData2d, 
-#' #             resultPath=getwd(), 
-#' #             idVar="representative", fcStr="norm_rel_fc_protein_", 
-#' #             intensityStr="sumionarea_protein_", addCol=NULL)
+#' data("panob2D_isobQuant_example")
+#' cfg <- panobinostat_2DTPP_config
+#' datRaw <- panobinostat_2DTPP_data
+#' data2d <- tpp2dImport(cfg, datRaw, fcStr = NULL)
+#' fcData2d <- tpp2dComputeFoldChanges(cfg, data2d)
+#' normData2d <- tpp2dNormalize(cfg, fcData2d)
+#' config_ccr <- tpp2dCreateCCRConfigFile(cfg)
+#' ccr2dResults <- tpp2dCurveFit(config_ccr, normData2d)
+#' tpp2dExport(cfg, ccr2dResults, resultPath = getwd())
 #'
 #' @return Creates excel file of the TPP-CCR analysis of the 2D-TPP data.
 #' 
@@ -22,16 +25,16 @@
 #' @param intensityStr character string indicating how columns that contain the raw masspec signal 
 #'  (e.g. sumionareas) values are called
 #' @param addCol additional names of columns which are to be attached to the result table
-#' @param normalizedData boolean variabel indicating whether the data has been normalized
+#' @param normalizedData boolean variable indicating whether the data has been normalized
 #' @param trRef character string containing a valid system path to a TPP-TR reference RData
 #' file
 #' 
 #' 
 #' @export
-tpp2dExport <- function(configTable=NULL, tab=NULL, resultPath=NULL, idVar=NULL, fcStr=NULL, 
-                        intensityStr=NULL, addCol=NULL, normalizedData=FALSE, trRef=NULL){
+tpp2dExport <- function(configTable=NULL, tab=NULL, resultPath=NULL, idVar="gene_name", fcStr="rel_fc_", 
+                        intensityStr="signal_sum_", addCol=NULL, normalizedData=FALSE, trRef=NULL){
   if (is.null(fcStr)){
-    fcStr <- "rel_fc_protein_"
+    fcStr <- "rel_fc_"
   }
   fileName <- file.path(resultPath, paste(format(Sys.time(),"%Y-%m-%d"), "results_2D_TPP.xlsx", 
                                 sep="_"))

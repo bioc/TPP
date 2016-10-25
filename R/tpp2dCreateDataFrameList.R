@@ -9,7 +9,7 @@
 #'   experimental data and creates data frame or extracts temperature specific data from pre-
 #'   existing data frame list}
 #'   
-#' @param configTable data frame of experimental conditons. See Section \code{details} for 
+#' @param configTable data frame of experimental conditions. See Section \code{details} for 
 #'   instructions how to create this object. 
 #' @param data can be either a list of data frames featuring a data frame with data
 #'   for each experiment or can be NULL when filepaths for the respective experiments are indicated in 
@@ -28,17 +28,17 @@
 #'   
 #' @export
 tpp2dCreateDataFrameList <- function(configTable=NULL, data=NULL, 
-                                     idVar="representative", 
+                                     idVar="gene_name", 
                                      fcStr=NULL, addCol=NULL,
-                                     intensityStr="sumionarea_protein_", 
-                                     qualColName=c("qupm","qusm")){
+                                     intensityStr="signal_sum_", 
+                                     qualColName = "qupm"){
   # pre-define output list
   #df.list <- list()
   exp.ind <- which(colnames(configTable) %in% "Experiment")
   
   # check whether data is provided or must be read in
   if (is.null(data)){
-    # loop over all rows of the config table and read in data corresponding to experimental conditons
+    # loop over all rows of the config table and read in data corresponding to experimental conditions
     out.df <- lapply(seq(nrow(configTable)), function(exp){
       # get path string
       path.str <- as.character(configTable$Path[exp])

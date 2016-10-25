@@ -1,8 +1,8 @@
 inferApparentStabilities <- function(data_2D, 
                                      trRefDataPath, 
-                                     idVar = "representative",
-                                     fcStr = "norm_rel_fc_protein_",
-                                     refFcStr = "norm_rel_fc_protein_"){
+                                     idVar = "gene_name",
+                                     fcStr = "norm_rel_fc_",
+                                     refFcStr = "norm_rel_fc_"){
   
   message("Normalizing data by TR-reference...")
   

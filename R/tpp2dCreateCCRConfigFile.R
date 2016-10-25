@@ -5,7 +5,7 @@
 #' @return A config file of type data.frame which can be used for the \code{\link{tpp2dCurveFit}} function
 #'  
 #' @examples
-#'   data("panobinostat_2DTPP_smallExample")         
+#'   data("panob2D_isobQuant_example")        
 #'   CCRconfig <- tpp2dCreateCCRConfigFile(configTable = panobinostat_2DTPP_config)           
 #' @param configTable data frame that specifies important details of the 2D-TPP experiment
 #'   

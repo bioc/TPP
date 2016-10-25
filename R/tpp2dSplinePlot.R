@@ -19,14 +19,14 @@
 #' @param refFcStr character string indicating how columns that will contain the fold change
 #'   values in the reference data set
 #' @param methods vector of character strings that indicate which methods has been used 
-#'   for the previous analysis (default: c("doseRespone"), alternative: c("splineFit") or 
-#'   c("doseRespone", "splineFit"))
+#'   for the previous analysis (default: c("doseResponse"), alternative: c("splineFit") or 
+#'   c("doseResponse", "splineFit"))
 #' @param verbose print description of problems for each protein for which splines fits could 
 #'   not be performed
 #' 
 #' @export
 tpp2dSplinePlot <- function(data_2D=NULL, trData=NULL, fcStr=NULL, idVar=NULL, methods=c("doseResponse", "splineFit"),
-                           refFcStr="norm_rel_fc_protein_", verbose=FALSE){  
+                           refFcStr="norm_rel_fc_", verbose=FALSE){  
   if (is.null(idVar)){
     stop("Please specify idVar! A character string matching the column name of unique protein 
          identifiers!")

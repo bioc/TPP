@@ -1,6 +1,6 @@
 #' @title Create TPP-TR reference for 2D-TPP experiment
 #'   
-#' @description Performs a reference analysis of a TPP-TR experiment amd generates boxplots for
+#' @description Performs a reference analysis of a TPP-TR experiment and generates boxplots for
 #'  the distribution of fold changes at the different temperatures if desired.
 #' 
 #' @return A TPP-TR reference object for a certain cell line with different supporting files in a 
@@ -19,7 +19,7 @@
 #' @param trConfigTable config file for a reference TR dataset
 #' @param resultPath character string containing a valid system path to which folder output files 
 #'   will be written 
-#' @param outputName character string which will be used as name of the ouput folder
+#' @param outputName character string which will be used as name of the output folder
 #' @param createFCboxplots boolean flag indicating whether quality control boxplots are to be plotted
 #' @param idVar character string indicating which column of the data table contains the unique
 #'  protein ids
@@ -29,8 +29,8 @@
 #' @param normalize boolean argument stating whether the data should be normalized or not
 #' 
 tpp2dCreateTPPTRreference <- function(trConfigTable=NULL, resultPath=NULL, outputName=NULL, 
-                                      createFCboxplots=FALSE, idVar="representative", 
-                                      fcStr="rel_fc_protein_", qualColName="qupm", 
+                                      createFCboxplots=FALSE, idVar="gene_name", 
+                                      fcStr="rel_fc_", qualColName="qupm", 
                                       normalize=TRUE){
   # set options
   options("TPPTR_plot" = FALSE)
@@ -107,7 +107,7 @@ tpp2dCreateTPPTRreference <- function(trConfigTable=NULL, resultPath=NULL, outpu
                                 startPars=c("Pl"=0, "a"=550, "b"=10), maxAttempts=500, 
                                 nCores='max', verbose=FALSE)
   
-  # analyse melting curves and create result table
+  # analyze melting curves and create result table
   resultTable <- tpptrAnalyzeMeltingCurves(data=trDataFitted)
   
   # save result table

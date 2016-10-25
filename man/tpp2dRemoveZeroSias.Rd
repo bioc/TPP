@@ -4,8 +4,7 @@
 \alias{tpp2dRemoveZeroSias}
 \title{Remove rows with zero sumionarea values}
 \usage{
-tpp2dRemoveZeroSias(configTable, data.list,
-  intensityStr = "sumionarea_protein_")
+tpp2dRemoveZeroSias(configTable, data.list, intensityStr = "signal_sum_")
 }
 \arguments{
 \item{configTable}{data frame that specifies important details of the 2D-TPP experiment.}
@@ -20,7 +19,7 @@ will be regarded as containing sumionare values.}
 A list of data frames with NAs instead of zeros.
 }
 \description{
-Removes zero sumionare values in a specified data.list so that no errors are
+Removes zero sumionarea values in a specified data.list so that no errors are
   generated in the following fold change computation step. A corresponding data.list  
   with NAs instead of zeros is returned.
 }

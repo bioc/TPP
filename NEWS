@@ -144,8 +144,8 @@ Removed unit test that causes R CMD check to crash  since the latest update of p
  at least a one-line comment explaining what the function does.
 
 2.99.0 (Oct-06-2016)
- o Major update: Extended package to analyse 2D-TPP experiments
- o Major update: Extended package to analyse TPP-TR experiments by 
+ o Major update: Extended package to analyze 2D-TPP experiments
+ o Major update: Extended package to analyze TPP-TR experiments by 
    "non-parametric analysis of response curves" (NPARC), a non-parametrc 
     spline-based test for treatment effects.
  o Bugfix in 'tpptrCurveFit': restrict file names to 255 characters when creating
@@ -164,3 +164,11 @@ Removed unit test that causes R CMD check to crash  since the latest update of p
 2.99.3-5 (Oct-16-2016)
  o Adapt notation of function names and input arguments for consistency with 
    1D (TPP-TR and TPP-CCR) part.
+
+3.0.0 (Oct-18-2016)
+ o New Bioconductor release candidate!
+ 
+3.0.1 (Oct-25-2016)
+ o Adapt default arguments of all 2D functions to the isobarQuant data.
+ o Adjust example data set (2D-TPP experiment of Panobinostat) to isobarQuant 
+   naming convention and illustrate its use in the vignette and the examples.

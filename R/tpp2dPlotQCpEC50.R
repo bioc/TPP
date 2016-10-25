@@ -14,7 +14,7 @@
 #'  identifiers is called
 #' 
 tpp2dPlotQCpEC50 <- function(resultTable=NULL, resultPath=NULL, trRef=NULL, 
-                             idVar="representative"){
+                             idVar="gene_name"){
   message("Creating melting point vs. pEC50 QC plots...")  
   
   

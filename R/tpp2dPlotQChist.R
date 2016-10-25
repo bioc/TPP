@@ -19,10 +19,10 @@
 #'  identification quality measures 
 #' 
 tpp2dPlotQChist <- function(configFile=NULL, resultTable=NULL, resultPath=NULL, trRef=NULL, 
-                            fcStr=NULL, idVar="representative", qualColName="qupm"){
+                            fcStr=NULL, idVar="gene_name", qualColName="qupm"){
   message("Creating QC histograms...")  
   if (is.null(fcStr)){
-    fcStr <- "rel_fc_protein_"
+    fcStr <- "rel_fc_"
   }
   
   # define suffix of normlized data columns

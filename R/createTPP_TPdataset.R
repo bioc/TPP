@@ -1,6 +1,7 @@
 
 
 createTPP_TPdataset <- function(data.list, configTable, fcStr, idVar){
+  # problem: function not necessary any more? (nobody calls it)
   # extract different concentrations from configTable
   concentrations <- extractConc(configTable)
   temperatures <- configTable$Temperature

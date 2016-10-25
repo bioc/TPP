@@ -7,9 +7,10 @@
 #' @return A dataframe comprising all experimental data
 #' 
 #' @examples 
-#'   data("panobinostat_2DTPP_smallExample")
-#'   tpp2dResults <- tpp2dImport(configTable = panobinostat_2DTPP_config, 
-#'                              data = panobinostat_2DTPP_data, fcStr = NULL)
+#' data("panob2D_isobQuant_example")
+#' cfg <- panobinostat_2DTPP_config
+#' datRaw <- panobinostat_2DTPP_data
+#' data2d <- tpp2dImport(cfg, datRaw, fcStr = NULL)
 #' 
 #' @param configTable dataframe, or character object with the path to a file, 
 #'   that specifies important details of the 2D-TPP experiment. See Section 
@@ -32,10 +33,10 @@
 #'   to be attached to the data frame throughout the analysis 
 #' 
 #' @export
-tpp2dImport <- function(configTable=NULL, data=NULL, idVar="representative", 
-                            addCol=c("clustername", "msexperiment_id"),
-                            intensityStr="sumionarea_protein_", qualColName=c("qupm","qusm"),
-                            fcStr="rel_fc_protein_"){
+tpp2dImport <- function(configTable=NULL, data=NULL, idVar="gene_name", 
+                            addCol= NULL,
+                            intensityStr="signal_sum_", qualColName = c("qupm", "qssm"),
+                            fcStr="rel_fc_"){
   if (is.null(configTable) || !is.data.frame(configTable)){
     stop("Please specify a valid configTable of type data.frame!")
   }

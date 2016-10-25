@@ -1,6 +1,6 @@
 #' @title Remove rows with zero sumionarea values 
 #' 
-#' @description Removes zero sumionare values in a specified data.list so that no errors are
+#' @description Removes zero sumionarea values in a specified data.list so that no errors are
 #'   generated in the following fold change computation step. A corresponding data.list  
 #'   with NAs instead of zeros is returned.
 #'   
@@ -13,7 +13,7 @@
 #'   will be regarded as containing sumionare values.
 #'   
 #' @export 
-tpp2dRemoveZeroSias <- function(configTable, data.list, intensityStr="sumionarea_protein_"){
+tpp2dRemoveZeroSias <- function(configTable, data.list, intensityStr="signal_sum_"){
   lapply(names(data.list), function(l.name){
     # get sumionare cloumns
     intensity.cols <- colnames(data.list[[l.name]])[grep(intensityStr, colnames(data.list[[l.name]]))]

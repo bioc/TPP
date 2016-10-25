@@ -1,7 +1,7 @@
-#' @title Analyse spline fits to detect differential behaviour over time
+#' @title Analyze spline fits to detect differential behavior over time
 #' 
-#' @description Analyse fitted natural spline models and look for 
-#' differential behaviour between conditions by a moderated F-test.
+#' @description Analyze fitted natural spline models and look for 
+#' differential behavior between conditions by a moderated F-test.
 #'   
 #' @return A long table containing the hypothesis test results per protein.
 #' 

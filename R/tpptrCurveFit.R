@@ -36,7 +36,7 @@
 #' intervals for curve fitting. Default to NULL.
 #' @param resultPath location where to store the melting curve plots.
 #' @param ggplotTheme ggplot theme for melting curve plots.
-#' @param doPlot boolan value indicating whether melting curves should be
+#' @param doPlot boolean value indicating whether melting curves should be
 #'   plotted, or whether just the curve parameters should be returned.
 #' @param startPars start values for the melting curve parameters. Will be
 #'   passed to function \code{\link{nls}} for curve fitting.

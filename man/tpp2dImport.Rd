@@ -4,10 +4,9 @@
 \alias{tpp2dImport}
 \title{Import 2D-TPP data}
 \usage{
-tpp2dImport(configTable = NULL, data = NULL, idVar = "representative",
-  addCol = c("clustername", "msexperiment_id"),
-  intensityStr = "sumionarea_protein_", qualColName = c("qupm", "qusm"),
-  fcStr = "rel_fc_protein_")
+tpp2dImport(configTable = NULL, data = NULL, idVar = "gene_name",
+  addCol = NULL, intensityStr = "signal_sum_", qualColName = c("qupm",
+  "qssm"), fcStr = "rel_fc_")
 }
 \arguments{
 \item{configTable}{dataframe, or character object with the path to a file, 
@@ -45,9 +44,10 @@ Imports data from 2D-TPP experiments by parsing a configTable and reading in
   big data frame comprising all samples with respective fold changes
 }
 \examples{
-  data("panobinostat_2DTPP_smallExample")
-  tpp2dResults <- tpp2dImport(configTable = panobinostat_2DTPP_config, 
-                             data = panobinostat_2DTPP_data, fcStr = NULL)
+data("panob2D_isobQuant_example")
+cfg <- panobinostat_2DTPP_config
+datRaw <- panobinostat_2DTPP_data
+data2d <- tpp2dImport(cfg, datRaw, fcStr = NULL)
 
 }
 

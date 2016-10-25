@@ -5,8 +5,8 @@
 \title{Run TPP-CCR analysis for 2D-TPP experiment}
 \usage{
 tpp2dCurveFit(configFile, data, nCores = 1, naStrs = c("NA", "n/d", "NaN",
-  "<NA>"), fcStr = "norm_rel_fc_protein_", idVar = NULL,
-  nonZeroCols = "qupm", r2Cutoff = 0.8, fcCutoff = 1.5,
+  "<NA>"), fcStr = "norm_rel_fc_", idVar = "unique_ID",
+  nonZeroCols = "qssm", r2Cutoff = 0.8, fcCutoff = 1.5,
   slopeBounds = c(1, 50), fcTolerance = 0.1)
 }
 \arguments{
@@ -49,10 +49,14 @@ Performs analysis of a TPP-CCR experiment by invoking the routine
   for TPP-CCR curve fitting for each temperature of the sample.
 }
 \examples{
-  load(system.file("example_data/2D_example_data/referenceCCRConfig.RData", package="TPP"))
-  load(system.file("example_data/2D_example_data/exampleRunCCRInput.RData", package="TPP"))
-  CCRresults <- tpp2dCurveFit(configFile=exampleCCRConfig, data=exampleRunCCRInput, 
-                               idVar="unique_ID")
+data("panob2D_isobQuant_example")
+cfg <- panobinostat_2DTPP_config
+datRaw <- panobinostat_2DTPP_data
+data2d <- tpp2dImport(cfg, datRaw, fcStr = NULL)
+fcData2d <- tpp2dComputeFoldChanges(cfg, data2d)
+normData2d <- tpp2dNormalize(cfg, fcData2d)
+config_ccr <- tpp2dCreateCCRConfigFile(cfg)
+ccr2dResults <- tpp2dCurveFit(config_ccr, normData2d)
   
 }
 

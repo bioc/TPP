@@ -20,7 +20,7 @@
 #' @param fcCutoff Cutoff for highest compound concentration fold change
 #' @param slopeBounds Bounds on the slope parameter for dose response curve 
 #'   fitting
-#' @param fTest boolean variable stating whether an fTest was peformed 
+#' @param fTest boolean variable stating whether an fTest was performed 
 #' @param trRef character string containing a valid system path to a previously generated TPP-TR
 #'  reference object
 #' @param documentType character string indicating which document type the report should have
@@ -34,9 +34,9 @@
 tpp2dCreateReport <- function(data = NULL, configFile = NULL,
                               resultPath=NULL, documentType="html_document",
                               configTable=NULL, normalize=TRUE, methods=c(""),
-                              idVar=NULL, fcStr = "rel_fc_protein",
-                              fcStrUpdated = "norm_rel_fc_protein_", 
-                              intensityStr=NULL, addCol=NULL,
+                              idVar="gene_name", fcStr = "rel_fc_",
+                              fcStrUpdated = "norm_rel_fc_", 
+                              intensityStr="signal_sum_", addCol=NULL,
                               fcTolerance=NA, r2Cutoff=NA, fcCutoff=NA, slopeBounds=c(NA,NA),
                               fTest=FALSE, trRef="none"){
   

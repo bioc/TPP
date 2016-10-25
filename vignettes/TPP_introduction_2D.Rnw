@@ -20,7 +20,7 @@ European Molecular Biology Laboratory (EMBL),
 \\ Heidelberg, Germany\\
 \texttt{dorothee.childs@embl.de}}
 
-\date{\Rpackage{TPP} version \Sexpr{packageDescription("TPP")$Version} (Last revision 2016-09-28)}
+\date{\Rpackage{TPP} version \Sexpr{packageDescription("TPP")$Version} (Last revision 2016-10-25)}
 
 \begin{document}
 <<opts, include=FALSE, echo=FALSE>>=
@@ -114,7 +114,7 @@ temperature as input for the TPP package \cite{becher2016}.
 \subsection{Performing the analysis}
 Fist of all, we load an example data set:
 <<load_2d_data>>=
-data("panobinostat_2DTPP_smallExample")
+data("panob2D_isobQuant_example")
 @
 Using this command we load two objects: 
 \begin{enumerate}
@@ -126,7 +126,7 @@ Using this command we load two objects:
 config_tpp2d <- panobinostat_2DTPP_config
 data_tpp2d <- panobinostat_2DTPP_data
 
-config_tpp2d %>% head
+config_tpp2d
 data_tpp2d %>% str(1)
 @
 The data object \texttt{Panobinostat\_2DTPP\_smallExampleData} is organized as 
@@ -135,20 +135,15 @@ experiment. The names of the list elements correspond to the different
 multiplexed experiments. Each experimental dataset constains the following
 columns:
 <<colnames_Pano, eval=TRUE>>=
-data_tpp2d %>% extract2("X020466") %>% colnames
+data_tpp2d$Experiment1 %>% colnames
 @
 
 In ordern to perform the complete workflow we can now simply use:
 <<ttp2dworkflow, eval = TRUE >>=
 tpp2dResults <- analyze2DTPP(configFile = config_tpp2d, 
                              data = data_tpp2d, 
-                             idVar = "representative", 
                              fcStr = NULL,
-                             intensityStr = "sumionarea_protein_",
                              methods = "doseResponse", 
-                             qualColName = c("qupm", "qusm"),
-                             addCol = c("clustername","msexperiment_id"),
-                             nonZeroCols = "qupm",
                              nCores = 2)
 
 tpp2dResults %>% mutate_if(is.character, factor) %>% summary
@@ -162,11 +157,7 @@ of this workflow.
 <<ttp2dDataImport2, eval=TRUE>>=
 data2d <- tpp2dImport(configTable = config_tpp2d, 
                       data = data_tpp2d, 
-                      idVar = "representative", 
-                      fcStr = NULL,
-                      intensityStr = "sumionarea_protein_",
-                      qualColName = c("qupm", "qusm"),
-                      addCol = c("clustername","msexperiment_id"))
+                      fcStr = NULL)
 
 head(data2d)
 @
@@ -175,12 +166,11 @@ If we haven't computed fold changes from the raw "sumionarea" data, as it is the
 
 <<ttp2dComputeFC2, eval=TRUE>>=
 fcData2d <- tpp2dComputeFoldChanges(configTable = config_tpp2d,
-                                    data = data2d, 
-                                    intensityStr="sumionarea_protein_")
+                                    data = data2d)
 
 @
 
-Thereon the function adds addtional columns to our dataframe containing corresponding fold changes:
+Thereon the function adds additional columns to our dataframe containing corresponding fold changes:
 
 <<head_fold_changes2, eval=TRUE>>=
 head(fcData2d)
@@ -193,8 +183,8 @@ normData2d <- tpp2dNormalize(configTable = config_tpp2d,
                                 data = fcData2d)
 
 head(normData2d)
-# we have to update our fcStr, if we want the normalized columns to be used in the folloeing analysis
-fcStrUpdated <- "norm_rel_fc_protein_"
+# we have to update our fcStr, if we want the normalized columns to be used in the following analysis
+fcStrUpdated <- "norm_rel_fc_"
 @
 
 A configuration file for the TPP-CCR function can be then generated using the function \texttt{tpp2dCreateCCRConfigFile} 
@@ -208,21 +198,19 @@ To run the TPP-CCR main function on our 2D-TPP data we now invoke:
 <<tpp2dCurveFit, eval=TRUE, warning=FALSE>>=
 ccr2dResults <- tpp2dCurveFit(configFile = config_ccr, 
                                data = normData2d, 
-                               fcStr = fcStrUpdated, 
-                               idVar = "unique_ID")
+                               fcStr = fcStrUpdated)
 @
 
-Now we can plot the curves for any of the proteins for which at least one CCR curve could be fitted. In this case we choose HDAC2 with it's id IPI00289601.10:  
+Now we can plot the curves for any of the proteins for which at least one CCR curve could be fitted. In this case we choose HDAC2:  
 
 <<tpp2dPlotGoodCurves, eval=TRUE, warning=FALSE>>=
 goodCurves <- tpp2dPlotCCRGoodCurves(configTable = config_tpp2d, 
                                      data = ccr2dResults, 
-                                     idVar = "representative",
                                      fcStr = fcStrUpdated)
 @
 
 <<plotCurve2, eval=TRUE, fig.height=6, fig.width=7.5>>=
-goodCurves[["IPI00289601.10"]]
+goodCurves[["HDAC2"]]
 @
 %\begin{center}
 %\includegraphics[width=0.75\textwidth]{figure/plotCurve-1}
@@ -233,9 +221,8 @@ And we can also plot the single curves for each of the proteins with:
 <<plotSingleCurves, eval=TRUE, fig.show='hide', fig.height=6, fig.width=7.5 >>=
 singleCurve <- tpp2dPlotCCRSingleCurves(configTable = config_tpp2d, 
                                         data = ccr2dResults, 
-                                        idVar = "representative",
                                         fcStr = fcStrUpdated)
-singleCurve[["IPI00289601.10"]][["54"]]
+singleCurve[["HDAC2"]][["54"]]
 @
 %\begin{center}
 %\includegraphics[width=0.65\textwidth]{figure/plotSingleCurves-1}

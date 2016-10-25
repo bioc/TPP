@@ -14,7 +14,7 @@
 #' @param resultPath location where to store dose-response curve plots and 
 #'   results table.
 #' @param ggplotTheme ggplot theme for protein-wise plots.
-#' @param doPlot boolan value indicating whether protein-wise plots should be 
+#' @param doPlot boolean value indicating whether protein-wise plots should be 
 #'   produced Deactivating plotting decreases runtime.
 #' @param verbose print description of problems for each protein for which splines fits could 
 #'   not be performed
@@ -23,9 +23,9 @@
 #' @return None
 #' 
 tpp2dSplineFitAndTest <- function(data_2D, trRefDataPath, 
-                                  idVar = "representative",
-                                  fcStr = "norm_rel_fc_protein_", 
-                                  refFcStr = "norm_rel_fc_protein_",
+                                  idVar = "gene_name",
+                                  fcStr = "norm_rel_fc_", 
+                                  refFcStr = "norm_rel_fc_",
                                   resultPath = NULL,
                                   ggplotTheme = tppDefaultTheme(),
                                   doPlot = TRUE,

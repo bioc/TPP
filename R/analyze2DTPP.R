@@ -20,7 +20,7 @@
 #'   To perform normalization, set argument \code{normalize=TRUE}.}
 #'
 #' @examples 
-#' data("panobinostat_2DTPP_smallExample")
+#' data("panob2D_isobQuant_example")
 #' config_tpp2d <- panobinostat_2DTPP_config
 #' data_tpp2d <- panobinostat_2DTPP_data
 #' tpp2dResults <- analyze2DTPP(configFile = config_tpp2d, 
@@ -51,9 +51,9 @@
 #'   When reading data from file, this value will be passed on to the argument 
 #'   \code{na.strings} in function \code{read.delim}.
 #' @param methods vector of character strings that indicate which methods should be used 
-#'   for the analysis (default: c("doseRespone"), alternative: c("splineFit") or 
-#'   c("doseRespone", "splineFit")) 
-#' @param addCol vector of chracter strings indicating which additional columns to include 
+#'   for the analysis (default: c("doseResponse"), alternative: c("splineFit") or 
+#'   c("doseResponse", "splineFit")) 
+#' @param addCol character vector indicating which additional columns to include 
 #'   from the input data 
 #' @param qualColName character string indicating which column can be used for 
 #'   additional quality criteria when deciding between different non-unique 
@@ -71,19 +71,19 @@
 #'   fitting.
 #' @param xlsxExport produce results table in xlsx format and store at the 
 #' location specified by the \code{resultPath} argument.
-#' @param plotAll boolan value indicating whether all dose response curves should
+#' @param plotAll boolean value indicating whether all dose response curves should
 #' be generated. Deactivating plotting decreases runtime.
-#' @param plotAllR2 boolan value indicating whether all dose response curves which
-#' fullfill the demanded criterias (Rsquared, maximum plateau) should be generated. 
+#' @param plotAllR2 boolean value indicating whether all dose response curves which
+#' fulfill the demanded criteria (Rsquared, maximum plateau) should be generated. 
 #' Deactivating plotting decreases runtime.
-#' @param plotSingle boolan value indicating whether all dose response curves which
-#' fullfill the demanded criterias (Rsquared, maximum plateau) should be generated. 
+#' @param plotSingle boolean value indicating whether all dose response curves which
+#' fulfill the demanded criteria (Rsquared, maximum plateau) should be generated. 
 #' Deactivating plotting decreases runtime.
 #' @param fractAbund boolean variable, if set to TRUE additional information concerning
 #' sumionarea fractional abundance and dmso1 vs. dmso2 of adjacent temperatures is 
 #' added to the output table
 #' @param addInfo boolean variable, if set to TRUE additional information on counts of
-#' stabilization and destabiliazation of each protein is added to the output table
+#' stabilization and destabilization of each protein is added to the output table
 #' @param trRef character string containing a valid system path to a previously generated TPP-TR
 #' reference object
 #' @param refFcStr character string indicating which columns in the reference data set contain 
@@ -93,16 +93,16 @@
 #' 
 #' @export
 analyze2DTPP <- function(configFile = NULL, data = NULL, 
-                         resultPath = NULL, idVar = "representative", 
-                         fcStr = "rel_fc_protein_", 
-                         intensityStr = "sumionarea_protein_",   
+                         resultPath = NULL, idVar = "gene_name", 
+                         fcStr = "rel_fc_", 
+                         intensityStr = "signal_sum_",   
                          naStrs = c("NA", "n/d", "NaN", "<NA>"), 
                          methods = c("doseRespone", "splineFit"),
                          qualColName="qupm", compFc=TRUE, normalize=TRUE, addCol=NULL,
-                         nCores="max", nonZeroCols="qupm", fcTolerance=0.1, r2Cutoff=0.8,  
+                         nCores="max", nonZeroCols="qssm", fcTolerance=0.1, r2Cutoff=0.8,  
                          fcCutoff=1.5, slopeBounds=c(1,50), fractAbund=FALSE, xlsxExport=FALSE, 
                          plotAll=FALSE,plotAllR2=FALSE, plotSingle=FALSE, trRef=NULL, 
-                         refFcStr="norm_rel_fc_protein_", addInfo=FALSE, createReport="html_document") {
+                         refFcStr="norm_rel_fc_", addInfo=FALSE, createReport="html_document") {
   
   message("This is TPP version ", packageVersion("TPP"),".")
   
@@ -112,12 +112,12 @@ analyze2DTPP <- function(configFile = NULL, data = NULL,
   # import data
   Data2d <- tpp2dImport(configTable=configTable, data=data, 
                             idVar=idVar, addCol=addCol, intensityStr=intensityStr, 
-                            qualColName=qualColName, fcStr=fcStr)
+                            qualColName=c(qualColName, nonZeroCols), fcStr=fcStr)
   
   # compute fold changes if requested
   if (compFc){
     if (is.null(fcStr)){
-      fcStr <- "rel_fc_protein_"
+      fcStr <- "rel_fc_"
     }
     Data2d <- tpp2dComputeFoldChanges(configTable=configTable, data=Data2d, 
                                       intensityStr=intensityStr) 

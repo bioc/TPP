@@ -2,22 +2,21 @@
 #' @description Generates a list of plots for all proteins with all good curves for the different 
 #' temperatures of for a certain 2D-TPP experiment.
 #'  
-#' @return A list of all dose-reponse plots that could be fitted and fullfilled the
+#' @return A list of all dose-response plots that could be fitted and fulfilled the
 #'  requested quality criteria
 #'  
 #' @examples
-#' data("panobinostat_2DTPP_smallExample")
+#' data("panob2D_isobQuant_example")
 #' cfg <- panobinostat_2DTPP_config
 #' datRaw <- panobinostat_2DTPP_data
 #' data2d <- tpp2dImport(cfg, datRaw, fcStr = NULL)
-#' fcData2d <- tpp2dComputeFoldChanges(cfg, data2d, intensityStr="sumionarea_protein_")
+#' fcData2d <- tpp2dComputeFoldChanges(cfg, data2d)
 #' normData2d <- tpp2dNormalize(cfg, fcData2d)
 #' config_ccr <- tpp2dCreateCCRConfigFile(cfg)
-#' ccr2dResults <- tpp2dCurveFit(config_ccr, normData2d, idVar = "unique_ID")
-#' goodCurves <- tpp2dPlotCCRGoodCurves(cfg, ccr2dResults, 
-#'                                      idVar = "representative",
-#'                                      fcStr = "norm_rel_fc_protein_")
-#' goodCurves[["IPI00289601.10"]]
+#' ccr2dResults <- tpp2dCurveFit(config_ccr, normData2d)
+#' allCurves <- tpp2dPlotCCRAllCurves(cfg, ccr2dResults,
+#'                                    fcStr = "norm_rel_fc_")
+#' allCurves[["HDAC2"]]
 #' 
 #' @param configTable data frame that specifies important details of the 2D-TPP experiment
 #' @param data data frame returned by the \code{tpp2dCurveFit} function
@@ -29,8 +28,8 @@
 #' @param verbose boolean variable stating whether a print description of problems/success for 
 #'  plotting of each protein should be printed
 #' @export
-tpp2dPlotCCRGoodCurves <- function(configTable=NULL, data=NULL, idVar=NULL,
-                                   fcStr="rel_fc_protein_",  verbose=FALSE){
+tpp2dPlotCCRGoodCurves <- function(configTable=NULL, data=NULL, idVar="gene_name",
+                                   fcStr="rel_fc_",  verbose=FALSE){
   
   # pre-define global variables
   variable <- NULL
@@ -131,7 +130,7 @@ tpp2dPlotCCRGoodCurves <- function(configTable=NULL, data=NULL, idVar=NULL,
       return(temp.melt.plot)
     } else {
       if (verbose){
-        message(paste("None of the curves fullfilled the quality criteria for ", prot, sep=""))
+        message(paste("None of the curves fulfilled the quality criteria for ", prot, sep=""))
       }
       return(NULL)
     }

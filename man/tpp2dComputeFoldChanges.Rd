@@ -5,7 +5,7 @@
 \title{Compute 2D-TPP fold changes}
 \usage{
 tpp2dComputeFoldChanges(configTable = NULL, data = NULL,
-  intensityStr = NULL, fcStr = "rel_fc_protein_")
+  intensityStr = "signal_sum_", fcStr = "rel_fc_")
 }
 \arguments{
 \item{configTable}{data frame that specifies important details of the 2D-TPP experiment}
@@ -21,19 +21,19 @@ fold change values will be called. The suffix \code{fcStr} will be pasted in fro
 the names of the experiments.}
 }
 \value{
-A data.frame with addtional columns with constitute fold changes calculated with 
- respect to the intenstiy values of the zero treatment column
+A data.frame with additional columns with constitute fold changes calculated with 
+ respect to the intensity values of the zero treatment column
 }
 \description{
 Computes fold changes by calculating fold changes of the sumionarea 
  relative to the reference column.
 }
 \examples{
-data("panobinostat_2DTPP_smallExample")
-load(system.file("example_data/2D_example_data/referenceReadInData.RData", package="TPP"))
-exampleFoldChanges <- tpp2dComputeFoldChanges(configTable = panobinostat_2DTPP_config, 
-                                              data = headData2d, 
-                                              intensityStr = "sumionarea_protein_")  
+data("panob2D_isobQuant_example")
+cfg <- panobinostat_2DTPP_config
+datRaw <- panobinostat_2DTPP_data
+data2d <- tpp2dImport(cfg, datRaw, fcStr = NULL)
+fcData2d <- tpp2dComputeFoldChanges(cfg, data2d)
                                  
 }
 

@@ -4,10 +4,9 @@
 \alias{tpp2dSplineFitAndTest}
 \title{Fit splines and perform f-Test}
 \usage{
-tpp2dSplineFitAndTest(data_2D, trRefDataPath, idVar = "representative",
-  fcStr = "norm_rel_fc_protein_", refFcStr = "norm_rel_fc_protein_",
-  resultPath = NULL, ggplotTheme = tppDefaultTheme(), doPlot = TRUE,
-  verbose = FALSE)
+tpp2dSplineFitAndTest(data_2D, trRefDataPath, idVar = "gene_name",
+  fcStr = "norm_rel_fc_", refFcStr = "norm_rel_fc_", resultPath = NULL,
+  ggplotTheme = tppDefaultTheme(), doPlot = TRUE, verbose = FALSE)
 }
 \arguments{
 \item{data_2D}{result data.frame from a 2D-TPP CCR analysis}
@@ -28,7 +27,7 @@ results table.}
 
 \item{ggplotTheme}{ggplot theme for protein-wise plots.}
 
-\item{doPlot}{boolan value indicating whether protein-wise plots should be 
+\item{doPlot}{boolean value indicating whether protein-wise plots should be 
 produced Deactivating plotting decreases runtime.}
 
 \item{verbose}{print description of problems for each protein for which splines fits could 

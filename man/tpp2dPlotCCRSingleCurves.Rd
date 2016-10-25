@@ -4,13 +4,13 @@
 \alias{tpp2dPlotCCRSingleCurves}
 \title{Plot single 2D-TPP CCR curves}
 \usage{
-tpp2dPlotCCRSingleCurves(configTable = NULL, data = NULL, idVar = NULL,
-  fcStr = "rel_fc_protein_", verbose = FALSE)
+tpp2dPlotCCRSingleCurves(configTable = NULL, data = NULL,
+  idVar = "gene_name", fcStr = "rel_fc_", verbose = FALSE)
 }
 \arguments{
 \item{configTable}{data frame that specifies important details of the 2D-TPP experiment}
 
-\item{data}{ouput table returned by the \code{tpp2dCurveFit} function}
+\item{data}{output table returned by the \code{tpp2dCurveFit} function}
 
 \item{idVar}{character string indicating which data column provides the 
 unique identifiers for each protein.}
@@ -23,25 +23,24 @@ will be regarded as containing fold change values.}
 plotting of each protein should be printed}
 }
 \value{
-A list of all single dose-reponse plots that could be fitted and fullfilled the
+A list of all single dose-response plots that could be fitted and fulfilled the
  requested quality criteria
 }
 \description{
 Generates a list of plots of all proteins for a certain 2D-TPP experiment
 }
 \examples{
-data("panobinostat_2DTPP_smallExample")
+data("panob2D_isobQuant_example")
 cfg <- panobinostat_2DTPP_config
 datRaw <- panobinostat_2DTPP_data
 data2d <- tpp2dImport(cfg, datRaw, fcStr = NULL)
-fcData2d <- tpp2dComputeFoldChanges(cfg, data2d, intensityStr="sumionarea_protein_")
+fcData2d <- tpp2dComputeFoldChanges(cfg, data2d)
 normData2d <- tpp2dNormalize(cfg, fcData2d)
 config_ccr <- tpp2dCreateCCRConfigFile(cfg)
-ccr2dResults <- tpp2dCurveFit(config_ccr, normData2d, idVar = "unique_ID")
-singleCurves <- tpp2dPlotCCRSingleCurves(cfg, ccr2dResults, 
-                                     idVar = "representative",
-                                     fcStr = "norm_rel_fc_protein_")
-singleCurves[["IPI00289601.10"]][[1]] 
+ccr2dResults <- tpp2dCurveFit(config_ccr, normData2d)
+singleCurves <- tpp2dPlotCCRSingleCurves(cfg, ccr2dResults,
+                                   fcStr = "norm_rel_fc_")
+singleCurves[["HDAC2"]][["54"]]
 
 }
 

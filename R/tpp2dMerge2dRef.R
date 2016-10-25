@@ -11,7 +11,7 @@
 #' @param idVar character string matching the column containing the unique protein 
 #' identifiers
 #' 
-tpp2dMerge2dRef <- function(data=NULL, trRef=NULL, idVar="representative"){
+tpp2dMerge2dRef <- function(data=NULL, trRef=NULL, idVar="gene_name"){
   if (!is.null(data) && !is.null(trRef)){
     # load trRef
     load(trRef)

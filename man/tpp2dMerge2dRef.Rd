@@ -4,7 +4,7 @@
 \alias{tpp2dMerge2dRef}
 \title{Merge 2D-TPP result data with TPP-TR reference data}
 \usage{
-tpp2dMerge2dRef(data = NULL, trRef = NULL, idVar = "representative")
+tpp2dMerge2dRef(data = NULL, trRef = NULL, idVar = "gene_name")
 }
 \arguments{
 \item{data}{dataframe containing the 2D-TPP results}
