@@ -168,7 +168,7 @@ Removed unit test that causes R CMD check to crash  since the latest update of p
 3.0.0 (Oct-18-2016)
  o New Bioconductor release candidate!
  
-3.0.1 (Oct-25-2016)
+3.0.1 (Oct-26-2016)
  o Adapt default arguments of all 2D functions to the isobarQuant data.
  o Adjust example data set (2D-TPP experiment of Panobinostat) to isobarQuant 
    naming convention and illustrate its use in the vignette and the examples.

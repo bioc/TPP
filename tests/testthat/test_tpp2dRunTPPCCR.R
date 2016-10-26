@@ -2,23 +2,23 @@ load(system.file("example_data/2D_example_data/referenceCCRConfig.RData", packag
 load(system.file("example_data/2D_example_data/exampleRunCCRInput.RData", package="TPP"))
 
 test_that("evalRunCCR", code={
-  CCRresults <- tpp2dCurveFit(configFile=exampleCCRConfig, data=exampleRunCCRInput, idVar="unique_ID")
+  CCRresults <- tpp2dCurveFit(configFile=exampleCCRConfig, data=exampleRunCCRInput, idVar="unique_ID", fcStr = "norm_rel_fc_protein_", nonZeroCols = "qusm")
   expect_equal(CCRresults$passed_filter[1], TRUE)
   expect_equal(CCRresults$compound_effect[1], "destabilized")
 })
 
 test_that("evalRunCCRErr1", code={
-  expect_error(tpp2dCurveFit(configFile=exampleCCRConfig, data=exampleRunCCRInput, idVar="noneSense"))
+  expect_error(tpp2dCurveFit(configFile=exampleCCRConfig, data=exampleRunCCRInput, idVar="noneSense", fcStr = "norm_rel_fc_protein_", nonZeroCols = "qusm"))
 })
 
 test_that("evalRunCCRErr2", code={
-  expect_error(tpp2dCurveFit(configFile=exampleCCRConfig, data=exampleRunCCRInput, idVar="representative"))
+  expect_error(tpp2dCurveFit(configFile=exampleCCRConfig, data=exampleRunCCRInput, idVar="representative", fcStr = "norm_rel_fc_protein_", nonZeroCols = "qusm"))
 })
 
 test_that("evalRunCCRErr3", code={
-  expect_error(tpp2dCurveFit(data=exampleRunCCRInput, idVar="representative"))
+  expect_error(tpp2dCurveFit(data=exampleRunCCRInput, idVar="representative", fcStr = "norm_rel_fc_protein_", nonZeroCols = "qusm"))
 })
 
 test_that("evalRunCCRErr4", code={
-  expect_error(tpp2dCurveFit(configFile=exampleCCRConfig, idVar="representative"))
+  expect_error(tpp2dCurveFit(configFile=exampleCCRConfig, idVar="representative", fcStr = "norm_rel_fc_protein_", nonZeroCols = "qusm"))
 })

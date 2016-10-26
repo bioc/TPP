@@ -19,7 +19,11 @@ Evaluates whether the configuration file is handed over as data frame or as file
   and loads the file path if necessary
 }
 \examples{
+data("panob2D_isobQuant_example")
+configTable <- tpp2dEvalConfigTable(panobinostat_2DTPP_config)
 
+configTable <- tpp2dEvalConfigTable(system.file("example_data/2D_example_data/hdac2D_config.txt",
+                                                package = "TPP"))
 
 }
 

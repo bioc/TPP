@@ -13,7 +13,7 @@ tpp2dCurveFit(configFile, data, nCores = 1, naStrs = c("NA", "n/d", "NaN",
 \item{configFile}{list of dataframes, that specifies important details of the 2D-TPP 
 experiment for each temperature.}
 
-\item{data}{data.frame, that contains the data of the 2D-TPP 
+\item{data}{data frame that contains the data of the 2D-TPP 
 experiment for each temperature.}
 
 \item{nCores}{numeric value stating how many cores are to be used for computation}
