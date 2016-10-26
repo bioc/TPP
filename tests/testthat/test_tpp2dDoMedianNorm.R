@@ -1,4 +1,4 @@
-data(panobinostat_2DTPP_smallExample)
+load(system.file("example_data/2D_example_data/panobinostat_2DTPP_smallExample.RData", package="TPP"))
 load(system.file("example_data/2D_example_data/referenceFcData.RData", package="TPP"))
 load(system.file("example_data/2D_example_data/referenceNormData.RData", package="TPP"))
 
