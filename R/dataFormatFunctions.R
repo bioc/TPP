@@ -27,7 +27,11 @@ eSetsToLongTable_fc <- function(data){
     }
     
     ## Create wide table of fold changes with ID column:
-    fcWide  <- data.frame(id = ids, fcMatrix)
+    # Caution: Set check.names = FALSE. Otherwise, special characters in column 
+    # names are converted to '_' without warning -> can be problematic if
+    # concentrations were imported from config file in scientific format. 
+    # I.e. colname 'rel_fc_7.0000000000000007E-2' becomes 'rel_fc_7.0000000000000007E_2'
+    fcWide  <- data.frame(id = ids, fcMatrix, check.names = FALSE)
     
     # Convert to long table of fold changes:
     labelVals <- pDatWide$timeVec

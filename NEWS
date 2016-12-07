@@ -172,3 +172,7 @@ Removed unit test that causes R CMD check to crash  since the latest update of p
  o Adapt default arguments of all 2D functions to the isobarQuant data.
  o Adjust example data set (2D-TPP experiment of Panobinostat) to isobarQuant 
    naming convention and illustrate its use in the vignette and the examples.
+   
+3.0.3 (Dec-07-2016)
+ o Bugfix: ensure correct handling of drug concentrations when they are 
+           imported in scientific notation (xx.xxE-x)
