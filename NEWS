@@ -170,3 +170,7 @@ Changes in version 3.2.0 (Feb-13-2017):
 Changes in version 3.2.2 (Mar-12-2017):
  o Bug fix in the TPP-TR analysis: 
  - It is now possible to leave the 'otherRequirements' slot empty in the object containing the normalization criteria. 
+
+3.4.0 (May-01-2017)
+ o New Bioconductor release candidate!
+
