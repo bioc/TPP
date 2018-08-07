@@ -16,7 +16,7 @@ test_that(desc="all_ok1", code={
   
   new1 <- tpp2dComputeFoldChanges(data = datIn, newFcStr = fcStrIn)
   
-  expect_identical(out1, new1)
+  expect_equal(out1, new1)
 })
 
 test_that(desc="all_ok2", code={
@@ -26,7 +26,7 @@ test_that(desc="all_ok2", code={
   
   new2 <- tpp2dComputeFoldChanges(data = datIn, newFcStr = fcStrIn)
   
-  expect_identical(out2, new2)
+  expect_equal(out2, new2)
 })
 
 test_that(desc="default_fcStr", code={
@@ -41,7 +41,7 @@ test_that(desc="default_fcStr", code={
   ref_fc_cols <- gsub("rel_fc", "rel_fc_protein", new_fc_cols)
   
   check1 <- all(new_fc_cols %in% colnames(new1))
-  check2 <- all(new1[, new_fc_cols] == out1[, ref_fc_cols], na.rm = TRUE)
+  check2 <- all.equal(unname(new1[, new_fc_cols]),  unname(out1[, ref_fc_cols]))
   
   expect_true(check1 & check2)
 })
@@ -84,7 +84,7 @@ test_that(desc="intensities_not_found", code={
 test_that(desc="warning_deprecated_fct_arg1", code={
   
   datIn <- dat1
-
+  
   expect_warning(
     tpp2dComputeFoldChanges(data = datIn,
                             intensityStr = "sumion_area")
@@ -94,7 +94,7 @@ test_that(desc="warning_deprecated_fct_arg1", code={
 test_that(desc="warning_deprecated_fct_arg2", code={
   
   datIn <- dat1
-
+  
   expect_warning(
     tpp2dComputeFoldChanges(data = datIn,
                             fcStr = fcStrIn)
@@ -104,7 +104,7 @@ test_that(desc="warning_deprecated_fct_arg2", code={
 test_that(desc="warning_deprecated_fct_arg3", code={
   
   datIn <- dat1
-
+  
   expect_warning(
     tpp2dComputeFoldChanges(configTable = NULL, data = datIn)
   )
