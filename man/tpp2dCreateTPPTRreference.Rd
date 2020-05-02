@@ -6,6 +6,7 @@
 \usage{
 tpp2dCreateTPPTRreference(
   trConfigTable = NULL,
+  trDat = NULL,
   resultPath = NULL,
   outputName = NULL,
   createFCboxplots = FALSE,
@@ -17,6 +18,10 @@ tpp2dCreateTPPTRreference(
 }
 \arguments{
 \item{trConfigTable}{config file for a reference TR dataset}
+
+\item{trDat}{list of dataframes, containing fold change measurements and 
+additional annotation columns to be imported. Can be used instead of 
+specifying the file path in the \code{configTable} argument.}
 
 \item{resultPath}{character string containing a valid system path to which folder output files 
 will be written}
