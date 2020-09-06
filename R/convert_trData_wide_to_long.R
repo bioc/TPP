@@ -9,11 +9,16 @@ convert_trData_wide_to_long <- function(datWide, idColname, fcColname,
   # Goal:
   # | uniqueID | label | temperature | concentration | relConc| replicate | condition
   datLong <- datWide %>% 
-    select_(.dots=c(idColname, grep(fcColname, colnames(.), value = TRUE))) %>% 
-    gather_("key", fcColname, grep(fcColname, colnames(.), value = TRUE)) %>% 
-    arrange_(idColname) %>%
-    mutate(key = gsub(paste(fcColname, "_", sep=""), "", key)) %>%
-    rename_(relConc = fcColname)
+    select(!!!syms(c(idColname, grep(fcColname, colnames(.), value = TRUE)))) %>% 
+    gather("key", !!sym(fcColname), grep(fcColname, colnames(.), value = TRUE)) %>% 
+    arrange(!!sym(idColname)) %>%
+    mutate(key = gsub(paste(fcColname, "_", sep=""), "", key))
+  
+  if (fcColname != "relConc"){
+    datLong[["relConc"]] <- datLong[[fcColname]]
+    datLong[[fcColname]] <- NULL
+  }
+  
   
   # Define separate columns for label and experiment using regular expression,
   # and add column with temperatures per label:
