@@ -17,7 +17,7 @@ plot_fSta_distribution <- function(dataLong){
     mutate(label = paste("n =", n, ", df1 =", DF1, ", df2 =", df2, ", df2_moderated =", df2_moderated, sep = " "))
   
   p <- ggplot(data = plotDat, aes(x = staValue)) +
-    geom_histogram(aes(y=..density../max(..density..)), # Histogram with density instead of count on y-axis
+    geom_histogram(aes(y=after_stat(density)/max(after_stat(density))), # Histogram with density instead of count on y-axis
                    alpha = 1, bins = min(nrow(plotDat), 100), na.rm = TRUE) +
     geom_text(data = numProt, aes(x = 0.1, y = 1, label = label), 
               color = "red", inherit.aes = FALSE, hjust = "left", vjust = "top") +

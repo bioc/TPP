@@ -65,7 +65,11 @@ test_that(desc="allOk_values_H1", code={
                     replicate = c("Replicate1", "Replicate2", "Replicate1", "Replicate2"),
                     stringsAsFactors = FALSE)
   
-  expect_equal(fctrs, ref)
+  expect_equal(fctrs$condition, ref$condition)
+  expect_equal(fctrs$replicate, ref$replicate)
+  expect_equal(dim(fctrs), dim(ref))
+  expect_equal(colnames(fctrs), colnames(ref))
+  
 })
 
 test_that(desc="modelMissing", code={

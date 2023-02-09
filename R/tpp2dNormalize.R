@@ -70,7 +70,7 @@ tpp2dNormalize <- function(configTable = NULL, data, fcStr = NULL){
   message("Performing median normalization per temperature...")
   
   dataLong <- data %>% subset(select = c(idVar, "temperature", fcCols)) %>%
-    gather_("columnName", "y", gather_cols = fcCols) %>%
+    pivot_longer(cols = all_of(fcCols), names_to = "columnName", values_to = "y") %>%
     mutate(y = as.numeric(as.character(y)))
   
   normCoeffs <- dataLong %>% 
