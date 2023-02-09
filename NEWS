@@ -220,3 +220,6 @@ Changes in version 3.5.14 (May-02-2017):
 3.17.6
  o fix warnings due to unused argument of select(!!!syms(...)) statement during histogram generation for
 reference data
+
+3.27.1
+ o Fixed bugs and warnings after dplyr update
