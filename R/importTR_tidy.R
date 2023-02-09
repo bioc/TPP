@@ -156,7 +156,7 @@ importTidyFoldChanges <- function(dat, fcColNames, type, fcStr){
                                  type = NULL) %>%
     as.data.frame  %>%  
     mutate(uniqueID = extract2(dat, "uniqueID")) %>%
-    gather_("key", "y", fcColNames) %>%
+    pivot_longer(cols = all_of(fcColNames), names_to = "key", values_to = "y") %>%
     mutate(label = gsub(fcStr, "", key),
            columnPrefix = fcStr) 
   importFct_reportValidValues(fcTidy, nameTmp)

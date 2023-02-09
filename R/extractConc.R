@@ -12,7 +12,7 @@ extractConc <- function(configTable){
   
   uniqueConcentrations <- configTable %>% 
     subset(select = labelCols) %>%
-    gather_("label", "concentration", labelCols) %>% 
+    pivot_longer(cols = all_of(labelCols), names_to = "label", values_to = "concentration") %>% 
     filter(concentration != "-") %>% 
     mutate(concentration = as.numeric(concentration)) %>% # Prevent sorting errors during CCR data import
     select(-label) %>%
