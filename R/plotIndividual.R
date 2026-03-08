@@ -39,61 +39,62 @@ plotIndividual <- function(data, fittedModels, plotAnnotation,
   }
   
   ## Generate plots per protein
-  nCores <- checkCPUs(nCores)
-  doParallel::registerDoParallel(cores = nCores)
-  
   allIDs <- unique(data$uniqueID)
   
-  results <- foreach(idTmp = allIDs, .combine=rbind, .inorder=FALSE, 
-                     .verbose=FALSE) %dopar% {
-                       
-                       datTmp <- data2[.(idTmp)]
-                       
-                       fitsTmp <- fittedModels[.(idTmp)]
-                       
-                       plotTmp <- predict_and_plot_spline_models(dat = datTmp, fits = fitsTmp)
-                       
-                       if (!is.null(plotAnnotation)){
-                         
-                         ## Annotate each plot by p-values and degrees of freedom
-                         
-                         labelData <- plotAnnotation[.(idTmp)]
-                         
-                         plotTmp <- plotTmp + 
-                           geom_label(data = labelData, 
-                                      na.rm = TRUE,
-                                      vjust = "top", 
-                                      hjust = "right",
-                                      label.size = 0.5, 
-                                      inherit.aes = FALSE,
-                                      aes(label = textString, 
-                                          x = Inf, y = Inf), 
-                                      alpha = 0.1)
-                       }
-                       
-                       out <- data.frame(uniqueID = idTmp, stringsAsFactors = FALSE)
-                       
-                       if (returnPlots){
-                         out <- out %>% 
-                           group_by(uniqueID) %>% 
-                           do(plot = plotTmp)
-                       }
-                       
-                       if (doPlot){
-                         
-                         ## Print plot to PDF
-                         
-                         fTmp <- paths[.(idTmp)] %>% extract2("path")
-                         
-                         pdf(file = fTmp, width = 7.87, height = 5.90551, useDingbats = FALSE)
-                         print(plotTmp)
-                         dev.off()
-                         
-                         out$path = fTmp
-                         
-                       }
-                       
-                       out <- data.table(out)
-                     }
+  results <- purrr::map(allIDs, 
+                        ~ plotPerID(idTmp = .x, data = data2, models = fittedModels, returnPlots, doPlot, paths, plotAnnotation))  %>%
+    purrr::list_rbind()
+  
   return(results)
+}
+
+plotPerID <- function(idTmp, data, models, returnPlots, doPlot, paths, plotAnnotation = NULL){
+  
+  datTmp <- data[.(idTmp)]
+  
+  fitsTmp <- models[.(idTmp)]
+  
+  plotTmp <- predict_and_plot_spline_models(dat = datTmp, fits = fitsTmp)
+  
+  if (!is.null(plotAnnotation)){
+    
+    ## Annotate each plot by p-values and degrees of freedom
+    
+    labelData <- plotAnnotation[.(idTmp)]
+    
+    plotTmp <- plotTmp + 
+      geom_label(data = labelData, 
+                 na.rm = TRUE,
+                 vjust = "top", 
+                 hjust = "right",
+                 label.size = 0.5, 
+                 inherit.aes = FALSE,
+                 aes(label = textString, 
+                     x = Inf, y = Inf), 
+                 alpha = 0.1)
+  }
+  
+  out <- data.frame(uniqueID = idTmp, stringsAsFactors = FALSE)
+  
+  if (returnPlots){
+    out <- out %>% 
+      group_by(uniqueID) %>% 
+      do(plot = plotTmp)
+  }
+  
+  if (doPlot){
+    
+    ## Print plot to PDF
+    
+    fTmp <- paths[.(idTmp)] %>% extract2("path")
+    
+    pdf(file = fTmp, width = 7.87, height = 5.90551, useDingbats = FALSE)
+    print(plotTmp)
+    dev.off()
+    
+    out$path = fTmp
+    
+  }
+  
+  out <- data.table(out)
 }

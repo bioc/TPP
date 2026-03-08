@@ -10,7 +10,7 @@
 #' experiment. Can be provided instead of the input argument \code{data}.
 #' @param resultPath location where to store dose-response curve plots.
 #' @param ggplotTheme ggplot theme for dose response curve plots.
-#' @param nCores either a numerical value given the desired number of CPUs, or 
+#' @param nCores (deprecated) either a numerical value given the desired number of CPUs, or 
 #'   'max' to automatically assign the maximum possible number (default).
 #' @param verbose print name of each plotted protein to the command line as a 
 #' means of progress report.
@@ -64,7 +64,7 @@
 #' @export
 tppccrPlotCurves <- function(data=NULL, fcTable=NULL, curvePars=NULL,
                              resultPath=NULL, ggplotTheme=tppDefaultTheme(),
-                             nCores="max",  verbose=FALSE){
+                             nCores=NULL,  verbose=FALSE){
   
   ## Initialize variables to prevent "no visible binding for global
   ## variable" NOTE by R CMD check:
@@ -118,41 +118,23 @@ tppccrPlotCurves <- function(data=NULL, fcTable=NULL, curvePars=NULL,
   plotCols <- plotColors(expConditions=c(NA,NA),  comparisonNums=c(NA,NA))
   
   
-  nCores <- checkCPUs(cpus=nCores)
+  nCores <- 1
   t1 <- Sys.time()
-  if (nCores == 1){
-    plotFileNames <- foreach(pID=names(fcSplit), .combine=rbind, .inorder=FALSE, 
-                             .verbose=FALSE)  %do% {
-                               fcDF    = fcSplit[[pID]]
-                               parDF   = parSplit[[pID]]
-                               plotDRCurve(protID  = pID,
-                                           fcDF    = fcDF,
-                                           parDF   = parDF,
-                                           plotDir = file.path(resultPath, 
-                                                               plotDir),
-                                           allExp  = expNames,
-                                           addLegend = addLegend,
-                                           plotCols = plotCols,
-                                           verbose = verbose)
-                             }
-  } else if (nCores > 1){
-    doParallel::registerDoParallel(cores=nCores)
-    plotFileNames <- foreach(pID=names(fcSplit), .combine=rbind, .inorder=FALSE, 
-                             .verbose=FALSE)  %dopar% {
-                               fcDF    = fcSplit[[pID]]
-                               parDF   = parSplit[[pID]]
-                               plotDRCurve(protID  = pID,
-                                           fcDF    = fcDF,
-                                           parDF   = parDF,
-                                           plotDir = file.path(resultPath, 
-                                                               plotDir),
-                                           allExp  = expNames,
-                                           addLegend = addLegend, 
-                                           plotCols = plotCols,
-                                           verbose = verbose)
-                             }
-    stopImplicitCluster()
-  }
+  plotFileNames <- foreach(pID=names(fcSplit), .combine=rbind, .inorder=FALSE, 
+                           .verbose=FALSE)  %do% {
+                             fcDF    = fcSplit[[pID]]
+                             parDF   = parSplit[[pID]]
+                             plotDRCurve(protID  = pID,
+                                         fcDF    = fcDF,
+                                         parDF   = parDF,
+                                         plotDir = file.path(resultPath, 
+                                                             plotDir),
+                                         allExp  = expNames,
+                                         addLegend = addLegend,
+                                         plotCols = plotCols,
+                                         verbose = verbose)
+                           }
+  
   timeDiff <- Sys.time()-t1
   message("Runtime (", nCores, " CPUs used): ", round(timeDiff, 2), " ", 
           units(timeDiff), "\n")
