@@ -13,8 +13,7 @@
 #' normData_longTable <- tpptrTidyUpESets(normData_eSets)
 #' hdacSubset <- subset(normData_longTable, grepl("HDAC", uniqueID))
 #' hdacSplineFits <- tpptrFitSplines(data = hdacSubset, 
-#'                                   factorsH1 = c("condition"), 
-#'                                   nCores = 1)
+#'                                   factorsH1 = c("condition"))
 #' 
 #' @param data the data to be fitted
 #' @param splineDF degrees of freedom for natural spline fitting.
@@ -23,7 +22,7 @@
 #' @param computeAUC DEPRECATED
 #' @param returnModels should the linear models be returned in a column of the
 #' result table? Activation increases memory requirements.
-#' @param nCores either a numerical value given the desired number of CPUs, or 
+#' @param nCores (deprecated) either a numerical value given the desired number of CPUs, or 
 #'   'max' to automatically assign the maximum possible number (default).
 #' 
 #' Argument \code{splineDF} specifies the degrees of freedom for natural spline 
@@ -39,7 +38,7 @@
 tpptrFitSplines <- function(data, factorsH1, factorsH0 = character(0), 
                             splineDF = 3:7, 
                             computeAUC = NULL, returnModels = TRUE, 
-                            nCores = "max"){
+                            nCores = NULL){
   
   ## ----------------------------------------------------------------------- ##
   ## General checks and preparation
@@ -81,20 +80,14 @@ tpptrFitSplines <- function(data, factorsH1, factorsH0 = character(0),
           paste(splineDF, collapse = ", ")))
   
   ## Loop over different degrees of freedom in parallel:
-  nCores <- checkCPUs(cpus=nCores)
-  doParallel::registerDoParallel(cores=nCores)
   t1 <- Sys.time()
-  aicc_per_df <- foreach (df = splineDF, .combine=rbind) %dopar% {
-    
-    aiccCombined <- fit_splines_under_H0_and_H1(data = data, df = df,
-                                                strH0 = factorStrH0, 
-                                                strH1 = factorStrH1, 
-                                                returnModels = FALSE)
-    
-    return(aiccCombined)
-  }
-  stopImplicitCluster() 
-  
+
+  aicc_per_df <- purrr::map(splineDF, ~ fit_splines_under_H0_and_H1(data = data, df = .x,
+                                                                    strH0 = factorStrH0, 
+                                                                    strH1 = factorStrH1, 
+                                                                    returnModels = FALSE)) %>%
+    purrr::list_rbind()
+
   if (!any(aicc_per_df$successfulFit)){
     stop("Spline smoothing did not converge for any protein. Consider using different degrees of freedom (parameter 'splineDF')")
   }
@@ -145,7 +138,7 @@ tpptrFitSplines <- function(data, factorsH1, factorsH0 = character(0),
     arrange(uniqueID)
    
   timeDiff <- Sys.time()-t1
-  message("Runtime (", nCores, " CPUs used): ", round(timeDiff, 2), " ", 
+  message("Runtime (1 CPU used): ", round(timeDiff, 2), " ", 
           units(timeDiff), "\n")
   
   return(out)
