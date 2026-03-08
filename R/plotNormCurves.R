@@ -47,13 +47,18 @@ plotNormCurves <- function(modelList, xMat, fcMat, r2Vec, nNormP, plotTheme){
   p <- p + xlab(paste('Temperature [\U00B0', 'C]', sep='')) + 
     ylab("Median fold change")
   p <- p + geom_line(data=plotDF_curves, na.rm = TRUE,
-                     aes_string(x="Temperature", y="FoldChange", 
-                                colour="condition"), size=1 )
+                     aes(x = !!rlang::sym("Temperature"), 
+                         y = !!rlang::sym("FoldChange"), 
+                         colour = !!rlang::sym("condition")), 
+                     size=1 )
   p <- p + geom_point(data=plotDF_points, na.rm = TRUE, size = 4,
-                      aes_string(x="Temperature", y="FoldChange", 
-                                 colour="condition"))
+                      aes(x = !!rlang::sym("Temperature"), 
+                          y = !!rlang::sym("FoldChange"), 
+                          colour = !!rlang::sym("condition")))
   p <- p + geom_text(data=plotDF_anno, 
-                     aes_string(x="xPos", y="yPos", label="lab"))
+                     aes(x = !!rlang::sym("xPos"), 
+                         y = !!rlang::sym("yPos"), 
+                         label = !!rlang::sym("lab")))
   p <- p + facet_wrap(facets=~condition)
   
   return(p)

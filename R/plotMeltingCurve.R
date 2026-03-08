@@ -124,23 +124,30 @@ plotMeltingCurve <- function(modelList, listUpper, listLower,
     
     if (useCI) {
       p <- p + geom_ribbon(data=plotData1,
-                           aes_string(x="Temperature", ymax="CiUp", 
-                                      ymin = "CiLow", 
-                                      fill="Group"), alpha = 0.3) + 
+                           aes(x = !!rlang::sym("Temperature"), 
+                               ymax = !!rlang::sym("CiUp"), 
+                               ymin = !!rlang::sym("CiLow"), 
+                               fill = !!rlang::sym("Group")), 
+                           alpha = 0.3) + 
         scale_fill_manual(values=plotCols)
     }
     
     p <- p + geom_line(data=plotData1, size=1, na.rm = TRUE,
-                       aes_string(x="Temperature", y="FoldChange", 
-                                  colour="Group", linetype="Group"))
+                       aes(x = !!rlang::sym("Temperature"), 
+                           y = !!rlang::sym("FoldChange"), 
+                           colour = !!rlang::sym("Group"), 
+                           linetype = !!rlang::sym("Group")))
     
     
     p <- p + geom_point(data=plotData2, na.rm = TRUE,
-                        aes_string(x="Temperature", y="FoldChange", 
-                                   colour="Group"))
+                        aes(x = !!rlang::sym("Temperature"), 
+                            y = !!rlang::sym("FoldChange"), 
+                            colour = !!rlang::sym("Group")))
     p <- p + geom_point(data=plotData3, shape = 4, size = 5, 
                         show.legend = FALSE, na.rm = TRUE,
-                        aes_string(x = "xMP", y = "yMP", colour = "Group"))
+                        aes(x = !!rlang::sym("xMP"), 
+                            y = !!rlang::sym("yMP"), 
+                            colour = !!rlang::sym("Group")))
     
     p <- addTableToPlot(plotObj = p, tableDF = tableDF, meltVar = "condition", 
                         clrs = plotCols)
