@@ -30,8 +30,8 @@ qcPlotFct_Bottleplot <- function(mpDiffs, minSlopes, isHit=NULL, strHit, strNoHi
   signfTest[!isHit] <- strNoHit
   plotDf$signfTest <- factor(signfTest, levels=c(strNoHit, strHit))
   scatterPlot <- scatterPlot + geom_point(data=plotDf, na.rm = TRUE,
-                                          aes_string(x="mpDiffs", y="minSlopes", 
-                                                     color="signfTest"), size=3)
+                                          aes(x = mpDiffs, y = minSlopes, 
+                                              color = signfTest), size=3)
   
   scatterPlot <- scatterPlot + scale_x_continuous(limits=c(-15,15),
                                                   breaks=seq(-10,10,by=1), 
@@ -51,15 +51,15 @@ qcPlotFct_Bottleplot <- function(mpDiffs, minSlopes, isHit=NULL, strHit, strNoHi
   }
   scatterPlot <- scatterPlot + geom_point(data=subset(plotDf, signfTest==strHit), 
                                           na.rm = TRUE,
-                                          aes_string(x="mpDiffs", y="minSlopes", 
-                                                     color="signfTest"), size=3)
+                                          aes(x = mpDiffs, y = minSlopes, 
+                                              color = signfTest), size=3)
   if (!addHist){
     print(scatterPlot)
     return(scatterPlot)
   } else{
     histPlot <- ggplot()
     histPlot <- histPlot + geom_histogram(data=plotDf, na.rm = TRUE,
-                                          aes_string(x="minSlopes"), 
+                                          aes(x = minSlopes), 
                                           binwidth=abs(diff(yLimVec))/100) 
     histPlot <- histPlot + coord_flip()
     if (yLimVec[1] < yLimVec[2]){

@@ -78,7 +78,7 @@ No plot produced."
                          v.names="fc2")
           dfPlot <- merge(df1, df2)
           xy = geom_abline(intercept=0, slope=1, linetype=1, colour="red")
-          p <- ggplot(dfPlot, aes_string(x="fc1", y="fc2"))
+          p <- ggplot(dfPlot, aes(x = fc1, y = fc2))
           p <- p + geom_point(alpha=0.2, na.rm = TRUE) + xy
           p <- p + facet_wrap("temperature")
         }
