@@ -50,7 +50,7 @@ plotNormCurves <- function(modelList, xMat, fcMat, r2Vec, nNormP, plotTheme){
                      aes(x = !!rlang::sym("Temperature"), 
                          y = !!rlang::sym("FoldChange"), 
                          colour = !!rlang::sym("condition")), 
-                     size=1 )
+                     linewidth = 1 )
   p <- p + geom_point(data=plotDF_points, na.rm = TRUE, size = 4,
                       aes(x = !!rlang::sym("Temperature"), 
                           y = !!rlang::sym("FoldChange"), 

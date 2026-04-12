@@ -67,7 +67,7 @@ plotPerID <- function(idTmp, data, models, returnPlots, doPlot, paths, plotAnnot
                  na.rm = TRUE,
                  vjust = "top", 
                  hjust = "right",
-                 label.size = 0.5, 
+                 linewidth = 0.5, 
                  inherit.aes = FALSE,
                  aes(label = textString, 
                      x = Inf, y = Inf), 
