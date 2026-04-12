@@ -12,7 +12,6 @@ Depends:
     tidyr
 Imports:
     biobroom,
-    broom,
     data.table,
     doParallel,
     foreach,
