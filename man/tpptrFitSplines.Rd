@@ -11,7 +11,7 @@ tpptrFitSplines(
   splineDF = 3:7,
   computeAUC = NULL,
   returnModels = TRUE,
-  nCores = "max"
+  nCores = NULL
 )
 }
 \arguments{
@@ -28,7 +28,7 @@ tpptrFitSplines(
 \item{returnModels}{should the linear models be returned in a column of the
 result table? Activation increases memory requirements.}
 
-\item{nCores}{either a numerical value given the desired number of CPUs, or 
+\item{nCores}{(deprecated) either a numerical value given the desired number of CPUs, or 
   'max' to automatically assign the maximum possible number (default).
 
 Argument \code{splineDF} specifies the degrees of freedom for natural spline 
@@ -53,8 +53,7 @@ normData_eSets <- normResults$normData
 normData_longTable <- tpptrTidyUpESets(normData_eSets)
 hdacSubset <- subset(normData_longTable, grepl("HDAC", uniqueID))
 hdacSplineFits <- tpptrFitSplines(data = hdacSubset, 
-                                  factorsH1 = c("condition"), 
-                                  nCores = 1)
+                                  factorsH1 = c("condition"))
 
 }
 \seealso{

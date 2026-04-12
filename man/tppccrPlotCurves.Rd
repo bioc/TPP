@@ -10,7 +10,7 @@ tppccrPlotCurves(
   curvePars = NULL,
   resultPath = NULL,
   ggplotTheme = tppDefaultTheme(),
-  nCores = "max",
+  nCores = NULL,
   verbose = FALSE
 )
 }
@@ -28,7 +28,7 @@ experiment. Can be provided instead of the input argument \code{data}.}
 
 \item{ggplotTheme}{ggplot theme for dose response curve plots.}
 
-\item{nCores}{either a numerical value given the desired number of CPUs, or 
+\item{nCores}{(deprecated) either a numerical value given the desired number of CPUs, or 
 'max' to automatically assign the maximum possible number (default).}
 
 \item{verbose}{print name of each plotted protein to the command line as a 

@@ -2,6 +2,7 @@
 % Please edit documentation in R/TPP.R
 \docType{package}
 \name{TPP}
+\alias{-package}
 \alias{TPP}
 \alias{.onLoad}
 \title{Thermal proteome profiling (TPP)}
