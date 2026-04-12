@@ -20,7 +20,7 @@ plot_pVal_distribution <- function(dataWide){
     mutate(label = paste("n =", n))
   
   p <- ggplot(data = plotDat, aes(x = pValue)) +
-    geom_histogram(aes(y=..density../max(..density..)), # Histogram with density instead of count on y-axis
+    geom_histogram(aes(y = after_stat(density) / max(after_stat(density))), # Histogram with density instead of count on y-axis
                    alpha = 1, binwidth = 0.05, na.rm = TRUE) +
     geom_text(data = numProt, aes(x = 0.1, y = 1, label = label), 
               color = "red", inherit.aes = FALSE) +
