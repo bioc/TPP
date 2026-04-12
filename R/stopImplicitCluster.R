@@ -1,9 +1,3 @@
-stopImplicitCluster <- function(){
-  .options <- doParallel:::.options 
-  if(exists(".revoDoParCluster", where=.options) && 
-       !is.null(.options[['.revoDoParCluster']]))
-  {
-    stopCluster(.options[['.revoDoParCluster']])
-    remove('.revoDoParCluster', envir=.options)
-  }
+if (exists("stopImplicitCluster", envir = asNamespace("doParallel"), inherits = FALSE)) {
+  doParallel::stopImplicitCluster()
 }
