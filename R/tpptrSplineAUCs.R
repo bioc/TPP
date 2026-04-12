@@ -44,7 +44,8 @@ tpptrSplineAUCs <- function(data, fits){
       # Add information about grouping variables. This information was lost
       # when invoking the prediction after rowwise grouping:
       otherCols <- rowContents %>% inset2("fittedModel", NULL) %>% data.frame()
-      out <- bind_cols(res, mefa:::rep.data.frame(otherCols, nrow(res)))   
+      repOtherCols <- otherCols[rep(1L, nrow(res)), , drop = FALSE]
+      out <- bind_cols(res, repOtherCols)   
     }) %>% 
     ungroup
   
