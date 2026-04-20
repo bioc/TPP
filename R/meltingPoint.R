@@ -1,6 +1,6 @@
 meltingPoint <- function(model, xRange){
   ## Compute melting point of sigmoidal model.
-  if (class(model)=="try-error"){
+  if (inherits(model, "try-error")){
     return(NA)
   } else{
     meltPStr  <- paste(fctSigmoidTR(deriv=0), "-0.5")
@@ -10,7 +10,7 @@ meltingPoint <- function(model, xRange){
                      fExpr=meltPExpr, a=coeffs[["a"]], b=coeffs[["b"]], Pl=coeffs[["Pl"]],
                      interval=xRange, tol=0.0001), silent=TRUE)
     
-    if (class(r) != "try-error"){
+    if (!inherits(r, "try-error")){
       return(r$root)
     } else {
       return(NA)

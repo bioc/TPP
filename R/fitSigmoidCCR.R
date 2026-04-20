@@ -16,7 +16,7 @@ fitSigmoidCCR <- function(xVec, yVec, hill_init, pec50_init, slopeBounds,
   
   ## Check if fit was successful and if estimated parameters have sufficient quality:
   retry <- FALSE
-  if(class(m) == "try-error") {
+  if(inherits(m, "try-error")) {
     retry <- TRUE
   } else {
     ## If fit was successful extract pEC50 and Hill slope for quality check

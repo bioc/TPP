@@ -17,7 +17,7 @@ guessInitialDRslope <- function(dose, response, hill_bds, cpd_effect) {
     x <- dose[i:(i+2)]
     y <- response[i:(i+2)]
     m = try(fit <- lm(y~x))
-    if(class(m) != "try-error"){
+    if(!inherits(m, "try-error")){
       slope <- coef(fit)[2]
       slopes <- c(slopes, slope)
     }

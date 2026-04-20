@@ -18,7 +18,7 @@ pValFctPerformSingleComparison <- function(minsl, mpdiff, method, control,
                        type = "p", 
                        pAdj = "fdr")
       )
-      if (class(pVals) == "try-error"){
+      if (inherits(pVals, "try-error")){
         pVals <- rep(NA_real_, length(mpdiff))
       }
       

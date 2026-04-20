@@ -30,7 +30,7 @@ tpp2dExportPlots <- function(plotList, resultPath, type="none"){
                                                gsub("(\\.)", "_", pl)),"2D_TPP", 
                                           type, "plots.pdf", sep="_"))
           )))
-        if(class(savePl) == "try-error"){
+        if(inherits(savePl, "try-error")){
           setwd(plotPath)
           suppressMessages(
             ggsave(plotList[[pl]], 
@@ -54,7 +54,7 @@ tpp2dExportPlots <- function(plotList, resultPath, type="none"){
                 )
               )
             )
-            if(class(savePl) == "try-error"){
+            if(inherits(savePl, "try-error")){
               setwd(plotPath)
               suppressMessages(
                 ggsave(
@@ -74,7 +74,7 @@ tpp2dExportPlots <- function(plotList, resultPath, type="none"){
                      plotPath, paste(gsub("\\|", "_", gsub("(\\.)", "_", pl)), 
                                      "2D_TPP", type, 
                                      "plots.pdf", sep="_")))))
-        if(class(savePl) == "try-error"){
+        if(inherits(savePl, "try-error")){
           setwd(plotPath)
           suppressMessages(
             ggsave(

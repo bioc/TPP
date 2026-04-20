@@ -34,7 +34,7 @@ fitDRCurve <- function(protID, expName, dose, response, cpd_effect, slBds, verbo
                          hill_init=hill_init, pec50_init=pec50_init,
                          slopeBounds=slBds_tmp, concBounds=concBds)
     
-    if(class(fit) != "try-error") {
+    if(!inherits(fit, "try-error")) {
       # if fit was successful extract pEC50 and Hill slope and calculate R2
       pec50 <- coef(fit)["infl"]
       slope <- coef(fit)["hill"]

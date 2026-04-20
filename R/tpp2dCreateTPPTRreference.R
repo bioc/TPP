@@ -158,7 +158,7 @@ tpp2dCreateTPPTRreference <- function(trConfigTable=NULL,
         protID = as.character(tppRefData$sumResTable$summary$Protein_ID[row])
         l_plot <- try(trRefObject$createFCBoxPlot(protID), silent=TRUE)
         # if no error occurred during plot generation, save plot
-        if (class(l_plot) != "try-error") {
+        if (!inherits(l_plot, "try-error")) {
           fileName = paste("fcBoxpl_", gsub("\\.", "_", protID), ".pdf", sep="")
           savePath = file.path(boxPlotPath, fileName)
           message(paste("Saving ", fileName, "...", sep=""))

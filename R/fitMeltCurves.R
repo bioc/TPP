@@ -32,7 +32,7 @@ fitMeltCurves <- function(xMat, yDF, colPrefix, startPars, maxAttempts, expNames
                            maxAttempts = maxAttempts,
                            fixT0 = TRUE)
       listModels[[en]] <- mTmp
-      if(class(mTmp) != "try-error"){
+      if(!inherits(mTmp, "try-error")){
         flagModelConverged <- 1
       } else {
         flagModelConverged <- 0

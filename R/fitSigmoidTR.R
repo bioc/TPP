@@ -26,7 +26,7 @@ fitSigmoidTR <- function(xVec, yVec, startPars, maxAttempts, fixT0){
                silent=TRUE)
       attempts <- attempts + 1
       varyPars <- 1
-      if (class(m)!="try-error") {
+      if (!inherits(m, "try-error")) {
         repeatLoop <- FALSE
       }
     }
