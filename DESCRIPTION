@@ -1,7 +1,7 @@
 Package: TPP
 Type: Package
 Title: Analyze thermal proteome profiling (TPP) experiments
-Version: 3.39.2
+Version: 3.39.3
 Authors@R: c(
     person("Dorothee", "Childs", email = "d.childs@posteo.de", role = c("cre", "aut")),
     person("Nils", "Kurzawa", role = "aut"),
