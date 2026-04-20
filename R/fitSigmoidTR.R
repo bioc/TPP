@@ -1,4 +1,4 @@
-fitSigmoidTR <- function(xVec, yVec, startPars, maxAttempts, fixT0){
+fitSigmoidTR <- function(xVec, yVec, startPars, maxAttempts, fixT0, seed=123){
   ## Fit melting curve to a vector of TPP-TR measurements.
   
   strSigm <- fctSigmoidTR(deriv=0)
@@ -8,7 +8,7 @@ fitSigmoidTR <- function(xVec, yVec, startPars, maxAttempts, fixT0){
   
   ## For parameter re-sampling in case of non-convergence:
   repeatLoop <- TRUE
-  set.seed(123) # make results reproducible
+  set.seed(seed)
   
   ## Check if number of non-missing values is sufficient
   ## (NLS can only handle data with at least three non-missing values)
