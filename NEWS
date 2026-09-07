@@ -228,3 +228,8 @@ reference data
  o Avoid deprecated dplyr::tbl_df() calls in biobroom::tidy.ExpressionSet() by changing output to data.frame for compatibility with dplyr ≥ 1.0.0.
  o Deprecated parallelization and nCores parameter in fitting and plotting functions to improve maintainability and robustness to dependency changes.
  o Fixed ggplot2 deprecation warning to maintain compatibility with recent ggplot2 versions
+
+3.40.1
+ o Removed the deprecated biobroom dependency and replaced
+   biobroom::tidy.ExpressionSet() with an internal ExpressionSet
+   tidying helper.

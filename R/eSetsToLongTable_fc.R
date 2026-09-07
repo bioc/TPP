@@ -28,7 +28,7 @@ eSetsToLongTable_fc <- function(data){
   } 
   
   longExprs <- data %>% 
-    purrr::map(biobroom::tidy.ExpressionSet) %>% 
+    purrr::map(.tppTidyExpressionSet) %>%
     bind_rows(., .id = "experiment") %>%
     tibble::as_tibble() %>%
     rename(id = gene, foldChange = value, colName = sample) %>%
