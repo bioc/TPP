@@ -16,7 +16,6 @@ Depends:
     magrittr,
     tidyr
 Imports:
-    biobroom,
     data.table,
     doParallel,
     foreach,

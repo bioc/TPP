@@ -26,10 +26,6 @@
 #'   \code{\link{analyzeTPPCCR}}. See the vignette for detailed instructions.
 
 .onLoad <- function(libname, pkgname) {
-  # Set global option to avoid deprecated dplyr::tbl_df() usage in dependency biobroom.
-  # Forces biobroom to return data.frames instead of tbl_df to maintain compatibility
-  options("biobroom.return" = "data.frame") 
-  
   if (.Platform$OS.type == "windows") {
     if (Sys.which("zip")==""){
       msgText <- "\n ==> PLEASE READ BEFORE PACKAGE USE: 
