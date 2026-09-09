@@ -26,7 +26,7 @@
 #' The moderated F-statistic is calculated by the following equation:
 #' ...
 #' 
-#' @seealso \code{\link{ns}, \link{squeezeVar}}
+#' @seealso \code{\link{ns}, \link[limma]{squeezeVar}}
 #' @export
 tpptrFTest <- function(fittedModels, doPlot = FALSE, resultPath = NULL){
   

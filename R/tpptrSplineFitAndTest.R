@@ -66,7 +66,7 @@
 #'   this case, splines are fitted for each entry and the optimal value is
 #'   chosen per protein using Akaike's Information criterion.
 #'   
-#' @seealso \code{\link{ns}, \link{AICc}}
+#' @seealso \code{\link{ns}}, \code{AICc}
 #' @export
 tpptrSplineFitAndTest <- function(data,
                                   factorsH1,

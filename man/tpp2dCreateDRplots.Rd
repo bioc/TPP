@@ -47,7 +47,7 @@ how to find the relevant columns in the wide table.
   This plot displays all dose response curves with a high goodness-of-fit.} 
   }
  
- \code{paletteName} specifies the color palette to be used by the \code{\link{brewer.pal}} 
+ \code{paletteName} specifies the color palette to be used by the \code{\link[RColorBrewer]{brewer.pal}}
 function from the \code{RColorBrewer} package to assign a separate color to 
 each concentration.
 }
@@ -72,5 +72,5 @@ allCurves[["HDAC1"]]
 
 }
 \seealso{
-\code{\link{tpp2dCurveFit}} \code{\link{brewer.pal}}
+\code{\link{tpp2dCurveFit}} \code{\link[RColorBrewer]{brewer.pal}}
 }

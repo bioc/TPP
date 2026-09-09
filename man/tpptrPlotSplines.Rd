@@ -96,6 +96,6 @@ tpptrPlotSplines(data = tidyData, fittedModels = splineFits,
 
 }
 \seealso{
-\code{\link{ns}, \link{AICc}, 
+\code{\link{ns}, \code{AICc}, 
 \link{tpptrFitSplines}, \link{tpptrFTest}}
 }

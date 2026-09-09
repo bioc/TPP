@@ -97,5 +97,5 @@ testResults \%>\% filter(p_adj_NPARC <= 0.01) \%>\% select(Protein_ID, p_adj_NPA
 
 }
 \seealso{
-\code{\link{ns}, \link{AICc}}
+\code{\link{ns}}, \code{AICc}
 }

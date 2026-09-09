@@ -19,7 +19,7 @@
 #'   \item Perform normalization by fold 
 #'   change medians (optional) using the \code{\link{tpp2dNormalize}} function.
 #'   To perform normalization, set argument \code{normalize=TRUE}.}
-#'  \code{paletteName} specifies the color palette to be used by the \code{\link{brewer.pal}} 
+#'  \code{paletteName} specifies the color palette to be used by the \code{\link[RColorBrewer]{brewer.pal}}
 #' function from the \code{RColorBrewer} package to assign a separate color to 
 #' each concentration.
 #' 
