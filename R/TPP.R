@@ -3,8 +3,8 @@
 #' @description \cite{TPP} is a toolbox for analyzing thermal proteome profiling
 #'   (TPP) experiments.
 #'   
-#' @docType package
 #' @name TPP
+#' @aliases TPP-package NULL
 #' @param libname a character string giving the library directory where the 
 #'   package defining the namespace was found. Passed to .onLoad function.
 #' @param pkgname a character string giving the name of the package. Passed to 
