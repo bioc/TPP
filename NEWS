@@ -233,3 +233,6 @@ reference data
  o Removed the deprecated biobroom dependency and replaced
    biobroom::tidy.ExpressionSet() with an internal ExpressionSet
    tidying helper.
+   
+3.40.2
+ o Fixed package dependency checks by replacing methods::is() with inherits() and removing the unused mefa import.
