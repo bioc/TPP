@@ -2,7 +2,7 @@ plot_fSta_distribution <- function(dataLong){
   
   ## Initialize variables to prevent "no visible binding for global
   ## variable" NOTE by R CMD check:
-  uniqueID = staType = staValue = df1 = df2 = df2_moderated = DF1 = 
+  uniqueID = staType = staValue = df1 = df2 = df2_moderated = DF1 = density = 
     label <- NULL
   
   plotDat <- dataLong %>% 

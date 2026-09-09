@@ -41,6 +41,8 @@ tpp2dCreateTPPTRreference <- function(trConfigTable=NULL,
                                       fcStr="rel_fc_", 
                                       qualColName="qupm", 
                                       normalize=TRUE){
+  meltcurve_plot = Protein_ID <- NULL
+
   # set options
   options("TPPTR_plot" = FALSE)
   options("TPPTR_CI" = FALSE)

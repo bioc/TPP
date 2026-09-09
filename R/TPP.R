@@ -6,9 +6,9 @@
 #' @name TPP
 #' @aliases TPP-package NULL
 #' @param libname a character string giving the library directory where the 
-#'   package defining the namespace was found. Passed to .onLoad function.
+#'   package defining the namespace was found. Passed to .onAttach function.
 #' @param pkgname a character string giving the name of the package. Passed to 
-#'   .onLoad function.
+#'   .onAttach function.
 #'   
 #' @references Savitski, M. M., Reinhard, F. B., Franken, H., Werner, T., 
 #'   Savitski, M. F., Eberhard, D., ... & Drewes, G. (2014). Tracking cancer 
@@ -25,7 +25,7 @@
 #'   \code{\link{analyzeTPPTR}}. For a TPP-CCR analysis, use function 
 #'   \code{\link{analyzeTPPCCR}}. See the vignette for detailed instructions.
 
-.onLoad <- function(libname, pkgname) {
+.onAttach <- function(libname, pkgname) {
   if (.Platform$OS.type == "windows") {
     if (Sys.which("zip")==""){
       msgText <- "\n ==> PLEASE READ BEFORE PACKAGE USE: 

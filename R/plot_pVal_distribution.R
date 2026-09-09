@@ -2,7 +2,7 @@ plot_pVal_distribution <- function(dataWide){
   
   ## Initialize variables to prevent "no visible binding for global
   ## variable" NOTE by R CMD check:
-  uniqueID = p_NPARC = p_adj_NPARC = df1 = df2 = df2_moderated = pValType = 
+  uniqueID = p_NPARC = p_adj_NPARC = df1 = df2 = df2_moderated = pValType = density = 
     pValue = label <- NULL
   
   plotDat <- dataWide %>% 

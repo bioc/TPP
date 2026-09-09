@@ -4,7 +4,7 @@ eSetsToLongTable_fc <- function(data){
   ## Initialize variables to prevent "no visible binding for global
   ## variable" NOTE by R CMD check:
   label = concentration = temperature = gene = value = colName = colNameOrig = 
-    labelValue = foldChange = labelName = experiment <- NULL
+    labelValue = foldChange = labelName = experiment = id <- NULL
   
   expInfo <- data %>% lapply(function(eSet){
     cbind(pData(eSet), colNameOrig = colnames(Biobase::exprs(eSet)))

@@ -49,6 +49,8 @@ plotIndividual <- function(data, fittedModels, plotAnnotation,
 }
 
 plotPerID <- function(idTmp, data, models, returnPlots, doPlot, paths, plotAnnotation = NULL){
+
+  textString = uniqueID <- NULL
   
   datTmp <- data[.(idTmp)]
   

@@ -56,7 +56,7 @@
 #' \code{overviewSettings$maxRank}). 
 #' 
 #' 
-#' @seealso \code{\link{ns}, \code{\link{AICc}}, 
+#' @seealso \code{\link{ns}, \code{AICc}, 
 #' \link{tpptrFitSplines}, \link{tpptrFTest}}
 #' @export
 tpptrPlotSplines <- function(data, factorsH1 = NULL, factorsH0 = NULL, 

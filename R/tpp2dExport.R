@@ -52,6 +52,7 @@ tpp2dExport <- function(configTable = NULL,
                         normalizedData = NULL, 
                         trRef = NULL, 
                         addPlotColumns = TRUE){
+  temperature <- NULL
   
   if (!missing(configTable)){
     warning("`configTable` is deprecated.", call. = TRUE)

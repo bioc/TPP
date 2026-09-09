@@ -4,14 +4,14 @@
 \alias{TPP-package}
 \title{Thermal proteome profiling (TPP)}
 \usage{
-.onLoad(libname, pkgname)
+.onAttach(libname, pkgname)
 }
 \arguments{
 \item{libname}{a character string giving the library directory where the 
-package defining the namespace was found. Passed to .onLoad function.}
+package defining the namespace was found. Passed to .onAttach function.}
 
 \item{pkgname}{a character string giving the name of the package. Passed to 
-.onLoad function.}
+.onAttach function.}
 }
 \value{
 No return value defined for this document.

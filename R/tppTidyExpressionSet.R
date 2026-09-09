@@ -8,6 +8,8 @@
   if (is.null(rownames(expressionData))) {
     stop("The ExpressionSet must have feature names in its expression matrix.")
   }
+
+  gene <- NULL
   
   tidyExpressionSet <- tibble::as_tibble(
     expressionData,

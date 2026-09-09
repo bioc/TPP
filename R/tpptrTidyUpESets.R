@@ -23,7 +23,7 @@ tpptrTidyUpESets <- function(tppESetList, returnType = "exprs"){
   ## Initialize variables to prevent "no visible binding for global
   ## variable" NOTE by R CMD check:
   experiment = testGroup = refGroup = comparisonFactor = labelValue = 
-    foldChange <- NULL
+    foldChange = id <- NULL
   
   expInfo <- sapply(tppESetList, annotation)
   expNames <- unname(expInfo["name",])

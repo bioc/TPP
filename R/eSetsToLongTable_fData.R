@@ -3,7 +3,7 @@ eSetsToLongTable_fData <- function(data){
   
   ## Initialize variables to prevent "no visible binding for global
   ## variable" NOTE by R CMD check:
-  experiment = variable <- NULL
+  experiment = variable = id <- NULL
   
   expNames <- names(data)
   longTabAnnot <- c()

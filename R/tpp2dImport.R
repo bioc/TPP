@@ -59,7 +59,7 @@ tpp2dImport <- function(configTable = NULL,
   
   ## Initialize variables to prevent "no visible binding for global
   ## variable" NOTE by R CMD check:
-  experiment = unique_ID <- NULL
+  experiment = unique_ID = temperature <- NULL
   
   message("Importing data...")
   # import data as list, if is.null(fcStr) function will omit fold changes and only read in

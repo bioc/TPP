@@ -2,7 +2,7 @@ modelSelector <- function(fitStats, criterion, hypothesis) {
   
   ## Initialize variables to prevent "no visible binding for global
   ## variable" NOTE by R CMD check:
-  uniqueID = splineDF <- NULL
+  uniqueID = splineDF = testHypothesis = fitMetric = minMetric <- NULL
   
   # Check for missing function arguments
   checkFunctionArgs(match.call(), c("fitStats", "criterion", "hypothesis"))

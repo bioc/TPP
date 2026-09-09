@@ -33,7 +33,7 @@ fitSigmoidCCR <- function(xVec, yVec, hill_init, pec50_init, slopeBounds,
   if (retry==TRUE){
     startNLS2 <- list(hill=slopeBounds, infl=concBounds)
     # capture output because try with silent option does not work for nls2. Reason: nls2 calls try(nls, ...) without silent option internally.
-    cc <- capture.output(type="message",
+    cc <- utils::capture.output(type="message",
                          m <- try(nls2(formula=fitFct, algorithm="grid-search", 
                                        data  = list(x=xVec, y=yVec), 
                                        start = startNLS2, na.action=na.exclude)))
