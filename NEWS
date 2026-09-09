@@ -236,3 +236,9 @@ Version 3.41.1:
    
 Version 3.41.2:
  o Fixed package dependency checks by replacing methods::is() with inherits() and removing the unused mefa import.
+
+Version 3.41.3:
+ o Fixed R CMD check NOTES caused by undefined tidyverse/ggplot2 symbols,
+   and startup messages emitted from .onLoad, malformed roxygen/Rd markup.
+ o Fixed NEWS version headers so package NEWS can be parsed by R CMD check.
+
