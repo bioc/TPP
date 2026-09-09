@@ -47,7 +47,7 @@
 #'   \code{featureNames(S)}. Isobaric labels and the corresponding 
 #'   concentrations are 
 #'   returned by \code{S$label} and \code{S$concentration}. Paths to the 
-#'   produced plots are stored in code{featureData(S)$plot}.
+#'   produced plots are stored in \code{featureData(S)$plot}.
 #'  
 #' @examples
 #' data(hdacCCR_smallExample)

@@ -39,7 +39,7 @@ A list of expressionSet objects storing fold changes, the fitted
   expNames can be accessed by \code{featureNames(S)}. Isobaric labels and the
   corresponding concentrations are returned by \code{S$label} and
   \code{S$concentration}. The fitted curve parameters are stored in
-  code{featureData(S)}.
+  \code{featureData(S)}.
 }
 \description{
 \code{tppccrCurveFit} fits logistic dose response curves to fold

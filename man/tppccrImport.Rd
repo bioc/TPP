@@ -67,12 +67,13 @@ The imported dataset has to contain measurements obtained by a
   spreadsheet (tab-delimited text-file without quoted strings, or xlsx format). 
   Information about each experiment is stored row-wise. 
   It contains the following columns: 
-  \itemize{
- \item{\code{Path}: }{location of the datafile. Alternatively, data can be directly handed
+  \describe{
+ \item{\code{Path}}{location of the datafile. Alternatively, data can be directly handed
   over by the \code{data} argument.}
- \item{\code{Experiment}: }{unique experiment name.}
- \item{Label columns: } each isobaric label names a column that contains the 
+ \item{\code{Experiment}}{unique experiment name.}
+ \item{Label columns}{each isobaric label names a column that contains the 
   concentration administered for the label in the individual experiments.
+}
 }
   
   During data import, proteins with NAs in the data column specified by \code{idVar} receive 

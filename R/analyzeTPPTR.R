@@ -43,12 +43,13 @@
 #'   The \code{configTable} argument is a dataframe, or the path to a 
 #'   spreadsheet (tab-delimited text-file or xlsx format). Information about 
 #'   each experiment is stored row-wise. It contains the following columns: 
-#'   \itemize{ \item{\code{Path}:}{location of each datafile. Alternatively, 
+#'   \describe{ \item{\code{Path}}{location of each datafile. Alternatively, 
 #'   data can be directly handed over by the \code{data} argument.} 
-#'   \item{\code{Experiment}: }{unique experiment names.} 
-#'   \item{\code{Condition}: }{experimental conditions of each dataset.} 
-#'   \item{Label columns: } each isobaric label names a column that contains the
+#'   \item{\code{Experiment}}{unique experiment names.} 
+#'   \item{\code{Condition}}{experimental conditions of each dataset.} 
+#'   \item{Label columns}{each isobaric label names a column that contains the
 #'   temperatures administered for the label in the individual experiments. }
+#'   }
 #'   
 #'   The argument \code{methods} can be one of the following:
 #'   More than one method can be specified. For example, parametric testing of 

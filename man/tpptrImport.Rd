@@ -73,12 +73,13 @@ The imported datasets have to contain measurements obtained by
   spreadsheet (tab-delimited text-file without quoted strings, or xlsx format). 
   Information about each experiment is stored row-wise. 
   It contains the following columns: 
-  \itemize{ \item{\code{Path}:}{location of each datafile. Alternatively, 
+  \describe{ \item{\code{Path}}{location of each datafile. Alternatively, 
   data can be directly handed over by the \code{data} argument.} 
-  \item{\code{Experiment}: }{unique experiment names.} 
-  \item{\code{Condition}: }{experimental conditions of each dataset.} 
-  \item{Label columns: } each isobaric label names a column that contains the
+  \item{\code{Experiment}}{unique experiment names.} 
+  \item{\code{Condition}}{experimental conditions of each dataset.} 
+  \item{Label columns}{each isobaric label names a column that contains the
   temperatures administered for the label in the individual experiments. }
+  }
   
   Proteins with NAs in the data column specified by \code{idVar} receive 
   unique generic IDs so that they can be processed by the package.
