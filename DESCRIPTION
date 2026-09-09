@@ -27,7 +27,6 @@ Imports:
     knitr,
     limma,
     MASS,
-    mefa,
     nls2,
     openxlsx (>= 2.4.0),
     parallel,

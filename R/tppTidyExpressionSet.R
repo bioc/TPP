@@ -1,5 +1,5 @@
 .tppTidyExpressionSet <- function(eset) {
-  if (!methods::is(eset, "ExpressionSet")) {
+  if (!inherits(eset, "ExpressionSet")) {
     stop("'eset' must be an ExpressionSet object.")
   }
   
