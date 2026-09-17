@@ -86,7 +86,7 @@ Version 2.1.0:
     curves.
 
 Version 2.1.1:
-Updated package vignette.
+ o Updated package vignette.
   
 Version 2.1.2:
   o Bugfix in config table import:
@@ -118,10 +118,10 @@ Version 2.1.6:
    
 
 Version 2.3.2:
-Removed unit test that causes R CMD check to crash  since the latest update of package 'testthat'.
+ o Removed unit test that causes R CMD check to crash  since the latest update of package 'testthat'.
 
 Version 2.3.3:
-Fixed bug in plotColors for the case when no comparisons are specified
+ o Fixed bug in plotColors for the case when no comparisons are specified
    
 Version 2.99.0:
  o Major update: Extended package to analyze 2D-TPP experiments

@@ -20,7 +20,7 @@ NULL
 #'   investigate drug effects for HDAC inhibitor Panobinostat. It contains 7 
 #'   HDACs as well as a random selection of 493 further proteins.
 #'   
-#'   You can use this dataset to explore the \code{\link{TPP}} package 
+#'   You can use this dataset to explore the \code{\link[TPP]{TPP}} package 
 #'   functionalities without invoking the whole time consuming analysis on the 
 #'   big dataset.
 #'   

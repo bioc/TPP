@@ -3,9 +3,6 @@
 \name{TPP}
 \alias{TPP-package}
 \title{Thermal proteome profiling (TPP)}
-\usage{
-.onLoad(libname, pkgname)
-}
 \arguments{
 \item{libname}{a character string giving the library directory where the 
 package defining the namespace was found. Passed to .onLoad function.}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/tpptrImport.R
 \name{tpptrImport}
 \alias{tpptrImport}
-\title{Import TPP-TR datasets for analysis by the \code{\link{TPP}} package.}
+\title{Import TPP-TR datasets for analysis by the \code{\link[TPP]{TPP}} package.}
 \usage{
 tpptrImport(
   configTable,
@@ -51,7 +51,7 @@ A list of ExpressionSets storing the imported data for experiment.
 \description{
 \code{tpptrImport} imports several tables of protein fold 
   changes and stores them in a list of ExpressionSets for use in the 
-  \code{\link{TPP}} package.
+  \code{\link[TPP]{TPP}} package.
 }
 \details{
 The imported datasets have to contain measurements obtained by 

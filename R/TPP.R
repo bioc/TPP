@@ -24,6 +24,7 @@
 #' @details In order to start a TPP-TR analysis, use function 
 #'   \code{\link{analyzeTPPTR}}. For a TPP-CCR analysis, use function 
 #'   \code{\link{analyzeTPPCCR}}. See the vignette for detailed instructions.
+NULL
 
 .onLoad <- function(libname, pkgname) {
   if (.Platform$OS.type == "windows") {

@@ -3,7 +3,7 @@
 \name{tppccrImport}
 \alias{tppccrImport}
 \title{Import TPP-CCR dataset for analysis by the 
-  \code{\link{TPP}} package.}
+  \code{\link[TPP]{TPP}} package.}
 \usage{
 tppccrImport(
   configTable,
@@ -50,7 +50,7 @@ be accessed by \code{Biobase::exprs(S)}. Protein expNames can be accessed by
 }
 \description{
 \code{tppccrImport} imports a table of protein fold changes and 
-stores them in an ExpressionSet for use in the \code{\link{TPP}} package.
+stores them in an ExpressionSet for use in the \code{\link[TPP]{TPP}} package.
 }
 \details{
 The imported dataset has to contain measurements obtained by a
