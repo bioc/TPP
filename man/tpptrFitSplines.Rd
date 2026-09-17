@@ -57,5 +57,5 @@ hdacSplineFits <- tpptrFitSplines(data = hdacSubset,
 
 }
 \seealso{
-\code{\link{ns}, \code{AICc}}
+\code{\link{ns}}, \code{AICc}
 }
